@@ -3,7 +3,10 @@ const express = require('express')
 const app = express()
 
 // IMPORT ROUTERS
-const { activityRouter } = require('./controllers/activity.js/index.js')
+const { activityRouter } = require('./controllers/activity.js')
+const { ratingRouter } = require('./controllers/activity.js')
+const { reviewRouter } = require('./controllers/activity.js')
+const { userRouter } = require('./controllers/activity.js')
 
 
 // PARSE REGISTERED MIDDLEWARE
@@ -20,6 +23,9 @@ app.use(express.static(`${__dirname}/client/build`))
 
 // PREFIX FOR ALL ROUTERS
 app.use('/', activityRouter)
+app.use('/', ratingRouter)
+app.use('/', reviewRouter)
+app.use('/', userRouter)
 
 /* Step 5
  *
