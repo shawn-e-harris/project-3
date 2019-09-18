@@ -1,57 +1,3 @@
-// /* Step 1 import React, { Component } and axios
-//  *
-//  */
-// import React, { Component } from 'react'
-// // import axios from 'axios'
-
-// /* Step 2
-//  * Rename this class to reflect the component being created
-//  *
-//  */
-// export default class HelloWorld extends Component {
-
-//     /* Step 3
-//     * Create a state for the component to store view data
-//     *
-//     */
-//     state = {
-//         message: 'hello world'
-//     }
-
-//     /* Step 4
-//     * Use componentDidMount to retrieve any data to display
-//     *   Here you can make calls to your local express server
-//     *   or to an external API
-//     *   setState can be run here as well
-//     *   -REMINDER remember `setState` it is an async function
-//     */
-//     // componentDidMount() {
-//     //     axios.get('/api/helloworld')
-//     //         .then((res) => {
-//     //              this.setState({message: res.data})
-//     //         })
-//     // }
-
-//     /* Step 5
-//     *  The render function manages what is shown in the browser
-//     *  TODO: delete the jsx returned
-//     *   and replace it with your own custom jsx template
-//     *
-//     */
-//     render() {
-//         return (
-//             <div>
-//                 {/* Accessing the value of message from the state object */}
-//                 <h1>{this.state.message}</h1>
-//             </div>
-//         )
-//     }
-// }
-
-
-// *************************************************************************
-
-// import './App.css';
 import React, { Component } from 'react'
 
 let sum = (grades) => grades.reduce((previousGrades, currentGrade) => currentGrade += previousGrades);
@@ -142,29 +88,29 @@ class App extends React.Component {
     }
 
 
-    addNewCourse = (newCourseData, courseIndex) => {
-        //... = a spread operator that will create a brand new list 
-        //create a copy of our todo list
-        let courses = [...this.state.courses]//[...this.state.todoList.listItems]
-        console.log(newCourseData, courseIndex)
-        // change typeOf newAssignmentData.assignGrade to a string
-        // newAssignmentData.assignGrade = Number(newAssignmentData.assignGrade);
-        // console.log(newAssignmentData)
-        //push new item text into the listItems array
-        // don't need newAssignmentData because courseIndex is now being called in teh parameters
-        courses[courseIndex].courseName.push(newCourseData)
-        console.log(newCourseData, courseIndex)
-        //modify state using setState
-        this.setState({ courses })
-    }
-
-    // addNewCourse = (newCourseName) => {
-    //     let courses = [...this.state.courses]
-    //     console.log(newCourseName)
-    //     courses.push(newCourseName)
+    // addNewCourse = (newCourseData, courseIndex) => {
+    //     //... = a spread operator that will create a brand new list 
+    //     //create a copy of our todo list
+    //     let courses = [...this.state.courses]//[...this.state.todoList.listItems]
+    //     console.log(newCourseData, courseIndex)
+    //     // change typeOf newAssignmentData.assignGrade to a string
+    //     // newAssignmentData.assignGrade = Number(newAssignmentData.assignGrade);
+    //     // console.log(newAssignmentData)
+    //     //push new item text into the listItems array
+    //     // don't need newAssignmentData because courseIndex is now being called in teh parameters
+    //     courses[courseIndex].courseName.push(newCourseData)
+    //     console.log(newCourseData, courseIndex)
+    //     //modify state using setState
     //     this.setState({ courses })
-
     // }
+
+    addNewCourse = (newCourseName) => {
+        let courses = [...this.state.courses]
+        console.log(newCourseName)
+        courses.push(newCourseName)
+        this.setState({ courses })
+
+    }
 
 
     render() {
@@ -194,8 +140,20 @@ class AssignmentForm extends React.Component {
         courseIndex: 0
     }
 
+// componentDidMount() {
+//     this.getAppCourseWork()
+// }
+
+// getAppCourseWork() {
+//     getAllCoursework()
+//         .then(courses => Promise.all(courses.map(getAssignmentsForCourse)))
+//         .then(courses => {
+//             this.setState({ courses: [...courses] })
+//         })
+// }
+
     handleCourseInputChange = (event) => {
-        
+
         let newCourseName = event.target.value;
         this.setState({ newCourseName })
     }
@@ -254,7 +212,7 @@ class AssignmentForm extends React.Component {
                         value={this.state.assignGrade}
                         onChange={this.handleAssignmentInputChange}
                     />
-                    
+
                     <input
                         type="text"
                         placeholder="Course"
@@ -269,3 +227,179 @@ class AssignmentForm extends React.Component {
     }
 }
 export default App;
+
+
+// *********************************************************************************
+
+// import React from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+
+// import React, { Component } from 'react'
+
+// const assignment = ({ name, grade }) =>
+//     (<li>{name} - {grade}</li>)
+
+// const assignmentList = (assignments) => (
+//     <ul>
+//         {assignments.map(assignment)}
+//         {/* assignments.map(x => assignment(x)) */}
+//     </ul>
+// )
+
+// const averageOfAssignments = (assignments) =>
+//     assignments.length < 1 ? 0
+//         : assignments.reduce((curSum, assignment) => curSum + assignment.grade, 0) / assignments.length
+
+// const courseAverage = (assignments) => (
+//     <p>Average: {averageOfAssignments(assignments)}</p>
+// )
+
+// const course = ({ name, assignments }) => (
+//     <div>
+//         <h3>{name}</h3>
+//         {courseAverage(assignments)}
+//         {assignmentList(assignments)}
+//     </div>
+// )
+
+// const courseList = (courses) =>
+//     (<div>{courses.map(course)}</div>)
+
+// const courseOption = (selectedId) => ({ name, _id }) => (
+//     <option
+//         value={_id}
+//         selected={selectedId === _id}
+//     >
+//         {name}
+//     </option>
+// )
+
+// const courseNameDropDown = (courses, selectedId, onChange) => (
+//     //   <select name="courseworkId" onChange={onChange} >
+//     //     {courses.map(courseOption(selectedId))}
+//     //   </select>
+//     <input
+//         type="text"
+//         name="courseworkId"
+//         onChange={this.handleChange}
+//         placeholder="Assignment Grade"
+//     />
+// )
+
+// class NewAssignmentForm extends React.Component {
+
+//     state = {
+//         newAssignment:
+//         {
+//             name: "",
+//             grade: 0,
+//             courseWorkId: this.props.courses.length < 1 ? null : this.props.courses[0]._id
+//         },
+//     }
+
+//     handleChange = (evnt) => {
+//         //1. copy from state
+//         let newAssignment = { ...this.state.newAssignment }
+
+//         //2. modify state
+//         newAssignment[evnt.target.name] = evnt.target.value
+
+//         //3. setState
+//         this.setState({ newAssignment })
+//     }
+
+//     handleSubmit = (evnt) => {
+//         evnt.preventDefault();
+
+//         this.props.addAssignment(this.state.newAssignment)
+//     }
+
+//     render() {
+//         return (
+//             <form onSubmit={this.handleSubmit}>
+//                 {courseNameDropDown(this.props.courses, this.state.newAssignment.courseWorkId, this.handleChange)}
+//                 <input
+//                     type="text"
+//                     name="name"
+//                     onChange={this.handleChange}
+//                     placeholder="Assignment Name"
+//                 />
+//                 <input
+//                     type="number"
+//                     name="grade"
+//                     onChange={this.handleChange}
+//                     placeholder="Assignment Grade"
+//                 />
+//                 <input type="submit" value="+" />
+//             </form>
+//         )
+//     }
+// }
+
+// const getAllCoursework = () =>
+//     fetch('/coursework')
+//         .then(res => res.json())
+//         .catch(() => []) //if an error occurs then return an Promise that resolves to an empty array
+
+// const getFirstCourseWork = () =>
+//     getAllCoursework().then(cw => cw.length < 1 ? { name: "N/A", assignments: [] } : cw[0])
+
+// const getAssignmentsByCourseId = (courseId) =>
+//     fetch(`/assignment/coursework/${courseId}`)
+//         .then(res => res.json())
+//         .catch(() => [])
+
+// const getAssignmentsForCourse = (course) =>
+//     getAssignmentsByCourseId(course._id)
+//         .then(assignments => ({ assignments, ...course }))
+
+// const saveAssignment = (assignment) =>
+//     fetch('/assignment',
+//         {
+//             method: 'POST'
+//             , headers: { 'Content-Type': 'application/json' }
+//             , body: JSON.stringify(assignment)
+//         }
+//     )
+
+// class App extends React.Component {
+//     state =
+//         {
+//             courses: []
+//         }
+
+//     componentDidMount() {
+//         this.getAppCourseWork()
+//     }
+
+//     getAppCourseWork() {
+//         getAllCoursework()
+//             .then(courses => Promise.all(courses.map(getAssignmentsForCourse)))
+//             .then(courses => {
+//                 this.setState({ courses: [...courses] })
+//             })
+//     }
+
+//     addNewAssignment = (createdAssignment) => {
+
+//         createdAssignment.grade = Number.parseInt(createdAssignment.grade)
+//         createdAssignment.courseworkId = this.state.course._id
+
+//         saveAssignment(createdAssignment)
+//             .then(() => this.getAppCourseWork())
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 {this.state.courses ? <NewAssignmentForm courses={this.state.courses} addAssignment={this.addNewAssignment} />
+//                     : null
+//                 }
+//                 {courseList(this.state.courses)}
+//             </div>
+//         )
+//     }
+// }
+
+// export default App;
