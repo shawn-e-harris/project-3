@@ -30,6 +30,7 @@ class App extends Component {
         return (
             <div className="App">
                 Hellooooooo
+                <User />
                 {/* <User doWhatever={this.changeTheWorld.bind(this, "newWorld")} title={this.state.title}/> */}
             </div>
         )

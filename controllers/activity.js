@@ -14,11 +14,13 @@ activityRouter.get("/activities", function (req, res) {
   activityApi.getAllActivities()
     .then((allActivities) => {
       // RENDER NOT CREATED YET
-      res.render("activitiesViewPath", {allActivities})
+      // res.render("activitiesViewPath", {allActivities})
+      res.json({allActivities})
     })
     .catch((error) => {
       console.log(error) //will show error in console
     })
+  console.log("banana")
 })
 
 // CREATE NEW ACTIVITIES
