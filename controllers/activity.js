@@ -39,7 +39,8 @@ activityRouter.post("/activities", function (req, res) {
 activityRouter.get("/activities/new", function (req, res) {
   activityApi.addActivity(req.params.activitiesId)
     .then((getActivities) => {
-      res.send({getActivities})
+      // res.send({getActivities})
+      res.json({getActivities})
     })
     .catch((error) => {
       console.log(error) //will show error in console

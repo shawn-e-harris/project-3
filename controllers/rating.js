@@ -38,7 +38,8 @@ ratingRouter.post("/ratings", function (req, res) {
 ratingRouter.get("/ratings/new", function (req, res) {
   ratingApi.addRating(req.params.ratingsId)
     .then((getRatings) => {
-      res.send({ getRatings })
+      // res.send({getRatings})
+      res.json({getRatings})
     })
     .catch((error) => {
       console.log(error) //will show error in console

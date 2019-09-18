@@ -38,7 +38,8 @@ reviewRouter.post("/reviews", function (req, res) {
 reviewRouter.get("/reviews/new", function (req, res) {
   reviewApi.addReview(req.params.reviewsId)
     .then((getReviews) => {
-      res.send({ getreviews })
+      // res.send({ getReviews })
+      res.json({ getReviews })
     })
     .catch((error) => {
       console.log(error) //will show error in console

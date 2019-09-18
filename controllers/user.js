@@ -38,7 +38,8 @@ userRouter.post("/users", function (req, res) {
 userRouter.get("/users/new", function (req, res) {
   userApi.addUser(req.params.usersId)
     .then((getUsers) => {
-      res.send({ getusers })
+      // res.send({ getUsers })
+      res.json({ getUsers })
     })
     .catch((error) => {
       console.log(error) //will show error in console
