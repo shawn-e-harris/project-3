@@ -75,7 +75,7 @@ activityRouter.put("/activites/:activitesId", function (req, res) {
   })
 })
 
-
+// DELETE ACTIVITY
 activityRouter.delete("/activites/:activitesId", function (req, res) {
   activityApi.deleteActivites(req.params.activitesId)
   .then(() => {
