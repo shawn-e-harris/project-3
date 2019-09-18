@@ -9,34 +9,34 @@ const activityRouter = express.Router()
 
 // REQ HANDLERS ****************
 
-// GET ALL ACTIVITES
-activityRouter.get("/activites", function (req, res) {
+// GET ALL ACTIVITIES
+activityRouter.get("/activities", function (req, res) {
   activityApi.getAllActivities()
-    .then((allActivites) => {
+    .then((allActivities) => {
       // RENDER NOT CREATED YET
-      res.render("activitesViewPath", {allActivites})
+      res.render("activitiesViewPath", {allActivities})
     })
     .catch((error) => {
       console.log(error) //will show error in console
     })
 })
 
-// CREATE NEW ACTIVITES
-activityRouter.post("/activites", function (req, res) {
-  activityApi.addActivites(req.body)
+// CREATE NEW ACTIVITIES
+activityRouter.post("/activities", function (req, res) {
+  activityApi.addActivity(req.body)
   .then(() => {
-    res.redirect("/activites")
+    res.redirect("/activities")
   })
   .catch((error) => {
     console.log(error) //will show error in console
   })
 })
 
-// CREATE ACTIVITES PATH
-activityRouter.get("/activites/new", function (req, res) {
-  activityApi.addActivites(req.params.activitesId)
-    .then((getActivites) => {
-      res.send({getActivites})
+// CREATE ACTIVITIES PATH
+activityRouter.get("/activities/new", function (req, res) {
+  activityApi.addActivity(req.params.activitiesId)
+    .then((getActivities) => {
+      res.send({getActivities})
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -44,19 +44,19 @@ activityRouter.get("/activites/new", function (req, res) {
 })
 
 // RENDER CREATEFORM
-activityRouter.get("/activites/add", function (req, res) {
+activityRouter.get("/activities/add", function (req, res) {
   // RENDER NOT CREATED YET
-    res.render("activitesViewPath", {
+    res.render("activitiesViewPath", {
     })
 })
 
 // GET ONE ACTIVITY BY activityId
-activityRouter.get("/activites/:activitesId", function (req, res) {
-  activityApi.getOneActivites(req.params.activitesId)
-    .then((activitesFromDb) => {
+activityRouter.get("/activities/:activitiesId", function (req, res) {
+  activityApi.getOneActivity(req.params.activitiesId)
+    .then((activitiesFromDb) => {
       // RENDER NOT CREATED YET
-      // res.render("activitesViewPath", {_id: req.params.activitesId, activitesFromDb})
-      res.json(activitesFromDb)
+      // res.render("activitiesViewPath", {_id: req.params.activitiesId, activitiesFromDb})
+      res.json(activitiesFromDb)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -64,10 +64,10 @@ activityRouter.get("/activites/:activitesId", function (req, res) {
 })
 
 // EDIT ACTIVITY
-activityRouter.put("/activites/:activitesId", function (req, res) {
-  activityApi.updateActivites(req.params.activitesId, req.body)
+activityRouter.put("/activities/:activitiesId", function (req, res) {
+  activityApi.updateActivity(req.params.activitiesId, req.body)
   .then(() => {
-    res.redirect("/activites")
+    res.redirect("/activities")
   })
   .catch((error) => {
     console.log(error) //will show error in console
@@ -75,10 +75,10 @@ activityRouter.put("/activites/:activitesId", function (req, res) {
 })
 
 // DELETE ACTIVITY
-activityRouter.delete("/activites/:activitesId", function (req, res) {
-  activityApi.deleteActivites(req.params.activitesId)
+activityRouter.delete("/activities/:activitiesId", function (req, res) {
+  activityApi.deleteActivity(req.params.activitiesId)
   .then(() => {
-    res.redirect("/activites") //redirects to "/", can use any url, etc.
+    res.redirect("/activities") //redirects to "/", can use any url, etc.
   })
   .catch((error) => {
     console.log(error) //will show error in console
