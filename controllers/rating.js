@@ -14,7 +14,8 @@ ratingRouter.get("/ratings", function (req, res) {
   ratingApi.getAllRatings()
     .then((allRatings) => {
       // RENDER NOT CREATED YET
-      res.render("ratingsViewPath", {allRatings})
+      // res.render("activitiesViewPath", {allActivities})
+      res.json({ allRatings })
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -24,19 +25,19 @@ ratingRouter.get("/ratings", function (req, res) {
 // CREATE NEW RATINGS
 ratingRouter.post("/ratings", function (req, res) {
   ratingApi.addRating(req.body)
-  .then(() => {
-    res.redirect("/ratings")
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      res.redirect("/ratings")
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 // CREATE RATINGS PATH
 ratingRouter.get("/ratings/new", function (req, res) {
   ratingApi.addRating(req.params.ratingsId)
     .then((getRatings) => {
-      res.send({getRatings})
+      res.send({ getRatings })
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -46,8 +47,8 @@ ratingRouter.get("/ratings/new", function (req, res) {
 // RENDER CREATEFORM
 ratingRouter.get("/ratings/add", function (req, res) {
   // RENDER NOT CREATED YET
-    res.render("ratingsViewPath", {
-    })
+  res.render("ratingsViewPath", {
+  })
 })
 
 // GET ONE RATING BY ratingId
@@ -66,23 +67,23 @@ ratingRouter.get("/ratings/:ratingsId", function (req, res) {
 // EDIT RATING
 ratingRouter.put("/ratings/:ratingsId", function (req, res) {
   ratingApi.updateRating(req.params.ratingsId, req.body)
-  .then(() => {
-    res.redirect("/ratings")
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      res.redirect("/ratings")
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 // DELETE RATING
 ratingRouter.delete("/ratings/:ratingsId", function (req, res) {
   ratingApi.deleteRating(req.params.ratingsId)
-  .then(() => {
-    res.redirect("/ratings") //redirects to "/", can use any url, etc.
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      res.redirect("/ratings") //redirects to "/", can use any url, etc.
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 //  IMPORT ROUTERS

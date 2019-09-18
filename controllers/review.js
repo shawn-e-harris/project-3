@@ -14,7 +14,8 @@ reviewRouter.get("/reviews", function (req, res) {
   reviewApi.getAllReviews()
     .then((allReviews) => {
       // RENDER NOT CREATED YET
-      res.render("reviewsViewPath", {allReviews})
+      // res.render("activitiesViewPath", {allActivities})
+      res.json({ allReviews })
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -24,19 +25,19 @@ reviewRouter.get("/reviews", function (req, res) {
 // CREATE NEW REVIEWS
 reviewRouter.post("/reviews", function (req, res) {
   reviewApi.addReview(req.body)
-  .then(() => {
-    res.redirect("/reviews")
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      res.redirect("/reviews")
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 // CREATE REVIEWS PATH
 reviewRouter.get("/reviews/new", function (req, res) {
   reviewApi.addReview(req.params.reviewsId)
     .then((getReviews) => {
-      res.send({getreviews})
+      res.send({ getreviews })
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -46,8 +47,8 @@ reviewRouter.get("/reviews/new", function (req, res) {
 // RENDER CREATEFORM
 reviewRouter.get("/reviews/add", function (req, res) {
   // RENDER NOT CREATED YET
-    res.render("reviewsViewPath", {
-    })
+  res.render("reviewsViewPath", {
+  })
 })
 
 // GET ONE REVIEW BY reviewId
@@ -66,23 +67,23 @@ reviewRouter.get("/reviews/:reviewsId", function (req, res) {
 // EDIT REVIEW
 reviewRouter.put("/reviews/:reviewsId", function (req, res) {
   reviewApi.updateReview(req.params.reviewsId, req.body)
-  .then(() => {
-    res.redirect("/reviews")
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      res.redirect("/reviews")
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 // DELETE REVIEW
 reviewRouter.delete("/reviews/:reviewsId", function (req, res) {
   reviewApi.deleteReview(req.params.reviewsId)
-  .then(() => {
-    res.redirect("/reviews") //redirects to "/", can use any url, etc.
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      res.redirect("/reviews") //redirects to "/", can use any url, etc.
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 //  IMPORT ROUTERS
