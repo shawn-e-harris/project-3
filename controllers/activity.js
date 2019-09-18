@@ -27,7 +27,8 @@ activityRouter.get("/activities", function (req, res) {
 activityRouter.post("/activities", function (req, res) {
   activityApi.addActivity(req.body)
   .then(() => {
-    res.redirect("/activities")
+    // res.redirect("/activities")
+    res.json("ok")
   })
   .catch((error) => {
     console.log(error) //will show error in console

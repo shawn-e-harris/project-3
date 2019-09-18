@@ -26,7 +26,8 @@ reviewRouter.get("/reviews", function (req, res) {
 reviewRouter.post("/reviews", function (req, res) {
   reviewApi.addReview(req.body)
     .then(() => {
-      res.redirect("/reviews")
+      // res.redirect("/reviews")
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console

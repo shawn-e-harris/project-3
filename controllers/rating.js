@@ -26,7 +26,8 @@ ratingRouter.get("/ratings", function (req, res) {
 ratingRouter.post("/ratings", function (req, res) {
   ratingApi.addRating(req.body)
     .then(() => {
-      res.redirect("/ratings")
+      // res.redirect("/ratings")
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console

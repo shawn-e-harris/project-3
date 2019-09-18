@@ -26,7 +26,8 @@ userRouter.get("/users", function (req, res) {
 userRouter.post("/users", function (req, res) {
   userApi.addUser(req.body)
     .then(() => {
-      res.redirect("/users")
+      // res.redirect("/users")
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console
