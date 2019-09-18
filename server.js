@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 
 // IMPORT ROUTERS
-const { templateRouter } = require('./controllers/template.js')
+const { templateRouter } = require('./controllers/activity.js/index.js')
 
 
 // PARSE REGISTERED MIDDLEWARE
