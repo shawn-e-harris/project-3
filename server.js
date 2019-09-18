@@ -1,54 +1,24 @@
-/* 
- * This is the template for a server.js file.  Follow the steps below and read
- * the comments for creating your own (or you can just copy this file).
- */
-
-/* Step 1
- *
- * Import needed packages
- *
- */
+// IMPORT PACKAGES
 const express = require('express')
 const app = express()
 
-/* Step 2
- * 
- * import routers from controllers/
- *
- */
+// IMPORT ROUTERS
 const { templateRouter } = require('./controllers/template.js')
 
 
-/* Step 3
- *
- * Register middleware...
- */
-
-/* Step 3.a
- * ...to parse the body of the HTTP requests from a URL encoded string 
- */
+// PARSE REGISTERED MIDDLEWARE
 app.use(express.urlencoded({extended: true}))
 
-/* Step 3.b 
- *
- * ...to parse the body of the HTTP requests from a JSON string  
- */
+
+// PARSE HTTP REQUEST FROM JSON STRING
 app.use(express.json())
 
 
-/* Step 3.c
- *
- * use the `./client/build` directory to host static resources such as css and
- * image files 
- */
+// USE `./client/build` DIRECTORY TO HOST STATIC CSS AND IMAGE FILES
 app.use(express.static(`${__dirname}/client/build`))
 
 
-/* Step 4
- *
- * add router for the application to use. The first argument is a prefix to all
- * the paths defined in the router.
- */
+// PREFIX FOR ALL ROUTERS
 app.use('/api/helloworld', templateRouter)
 
 /* Step 5
@@ -60,18 +30,11 @@ app.get('/*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`)
 })
 
-/* Step 6
- *
- * Set the port the server is to run on
- *
- * NOTE: keep these lines at the bottom of the file 
- */
+
+// PORT NUMBER
 const PORT = process.env.PORT || 3001
 
-/* Step 7
- *
- * Start the server
- */
+// LOCALHOST: PORT(above)
 app.listen(PORT, () => {
     console.log(`App is listening on PORT ${PORT}`)
 })

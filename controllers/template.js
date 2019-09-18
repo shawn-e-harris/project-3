@@ -1,18 +1,18 @@
-
+// IMPORT EXPRESS
 const express = require('express')
 
+// IMPORT API FROM MODELS
+const activityApi = require('../models/activity.js')
 
-const templateApi = require('../models/template.js')
+// CREATE NEW ROUTER TO CONTAIN ALL REQ HANDLERS
+const activityRouter = express.Router()
 
-
-const templateRouter = express.Router()
-
-
-templateRouter.get('/', (req, res) => {
-  res.json(templateApi.getHelloWorldString())
+// REQ HANDLER
+activityRouter.get('/', (req, res) => {
+  res.json(activityApi.getHelloWorldString())
 })
 
-
+//  IMPORT ROUTERS
 module.exports = {
-  templateRouter
+  activityRouter
 }
