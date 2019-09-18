@@ -19,7 +19,7 @@ app.use(express.static(`${__dirname}/client/build`))
 
 
 // PREFIX FOR ALL ROUTERS
-app.use('/api/helloworld', activityRouter)
+app.use('/', activityRouter)
 
 /* Step 5
  *

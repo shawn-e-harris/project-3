@@ -32,8 +32,6 @@ activityRouter.post("/activites", function (req, res) {
   })
 })
 
-
-
 // CREATE ACTIVITES PATH
 activityRouter.get("/activites/new", function (req, res) {
   activityApi.addActivites(req.params.activitesId)
@@ -57,7 +55,8 @@ activityRouter.get("/activites/:activitesId", function (req, res) {
   activityApi.getOneActivites(req.params.activitesId)
     .then((activitesFromDb) => {
       // RENDER NOT CREATED YET
-      res.render("activitesViewPath", {_id: req.params.activitesId, activitesFromDb})
+      // res.render("activitesViewPath", {_id: req.params.activitesId, activitesFromDb})
+      res.json(activitesFromDb)
     })
     .catch((error) => {
       console.log(error) //will show error in console

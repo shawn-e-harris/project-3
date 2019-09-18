@@ -170,7 +170,7 @@ class AssignmentForm extends React.Component {
     // }
     handleCourseIndex = (event) => {
         // newAssignment[event.target.name] = event.target.value;
-        this.setState({ courseIndex: event.target.value })
+        this.setState({ courseIndex: res.data })
     }
 
     handleCourseFormSubmission = (event) => {

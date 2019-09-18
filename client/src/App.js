@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import HelloWorld from './components/WIP.js/index.js'
+import Activity from './components/activity.js'
+import User from './components/user.js'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <HelloWorld/>
+      <Activity/>
     </div>
   );
 }
