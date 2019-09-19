@@ -15,7 +15,7 @@ activityRouter.get("/activities", function (req, res) {
     .then((allActivities) => {
       // RENDER NOT CREATED YET
       // res.render("activitiesViewPath", {allActivities})
-      res.json({allActivities})
+      res.json({ allActivities })
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -26,13 +26,13 @@ activityRouter.get("/activities", function (req, res) {
 // CREATE NEW ACTIVITIES
 activityRouter.post("/activities", function (req, res) {
   activityApi.addActivity(req.body)
-  .then(() => {
-    // res.redirect("/activities")
-    res.json("ok")
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      // res.redirect("/activities")
+      res.json("ok")
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 // CREATE ACTIVITIES PATH
@@ -40,7 +40,7 @@ activityRouter.get("/activities/new", function (req, res) {
   activityApi.addActivity(req.params.activitiesId)
     .then((getActivities) => {
       // res.send({getActivities})
-      res.json({getActivities})
+      res.json({ getActivities })
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -50,8 +50,9 @@ activityRouter.get("/activities/new", function (req, res) {
 // RENDER CREATEFORM
 activityRouter.get("/activities/add", function (req, res) {
   // RENDER NOT CREATED YET
-    res.render("activitiesViewPath", {
-    })
+  // res.render("activitiesViewPath", {
+  // })
+  res.json("ok")
 })
 
 // GET ONE ACTIVITY BY activityId
@@ -70,23 +71,25 @@ activityRouter.get("/activities/:activitiesId", function (req, res) {
 // EDIT ACTIVITY
 activityRouter.put("/activities/:activitiesId", function (req, res) {
   activityApi.updateActivity(req.params.activitiesId, req.body)
-  .then(() => {
-    res.redirect("/activities")
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      // res.redirect("/activities")
+      res.json("ok")
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 // DELETE ACTIVITY
 activityRouter.delete("/activities/:activitiesId", function (req, res) {
   activityApi.deleteActivity(req.params.activitiesId)
-  .then(() => {
-    res.redirect("/activities") //redirects to "/", can use any url, etc.
-  })
-  .catch((error) => {
-    console.log(error) //will show error in console
-  })
+    .then(() => {
+      // res.redirect("/activities") //redirects to "/", can use any url, etc.
+      res.json("ok")
+    })
+    .catch((error) => {
+      console.log(error) //will show error in console
+    })
 })
 
 //  IMPORT ROUTERS
