@@ -1,10 +1,13 @@
 // IMPORT MONGOOSE
 const mongoose = require('./connection.js')
+const {user} = require("./user")
 
 
 // CREATE SCHEMEA
 const ActivitySchema = new mongoose.Schema({
- name: String
+  activityName: String,
+  activityLevel: String,
+  user: [userSchema]
 })
 
 // CREATE COLLECTION API
