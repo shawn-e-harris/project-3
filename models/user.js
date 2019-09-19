@@ -1,10 +1,14 @@
 // IMPORT MONGOOSE
 const mongoose = require('./connection.js')
+const {review} = require("./review")
+const {rating} = require("./rating")
 
 
 // CREATE SCHEMEA
 const UserSchema = new mongoose.Schema({
- name: String
+  userName: String,
+  review: [reviewSchema],
+  rating: [ratingSchema]
 })
 
 // CREATE COLLECTION API
