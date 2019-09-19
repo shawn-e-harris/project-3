@@ -49,8 +49,9 @@ reviewRouter.get("/reviews/new", function (req, res) {
 // RENDER CREATEFORM
 reviewRouter.get("/reviews/add", function (req, res) {
   // RENDER NOT CREATED YET
-  res.render("reviewsViewPath", {
-  })
+  // res.render("reviewsViewPath", {
+  // })
+  res.json("ok")
 })
 
 // GET ONE REVIEW BY reviewId
@@ -70,7 +71,8 @@ reviewRouter.get("/reviews/:reviewsId", function (req, res) {
 reviewRouter.put("/reviews/:reviewsId", function (req, res) {
   reviewApi.updateReview(req.params.reviewsId, req.body)
     .then(() => {
-      res.redirect("/reviews")
+      // res.redirect("/reviews")
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -81,7 +83,8 @@ reviewRouter.put("/reviews/:reviewsId", function (req, res) {
 reviewRouter.delete("/reviews/:reviewsId", function (req, res) {
   reviewApi.deleteReview(req.params.reviewsId)
     .then(() => {
-      res.redirect("/reviews") //redirects to "/", can use any url, etc.
+      // res.redirect("/reviews") //redirects to "/", can use any url, etc.
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console
