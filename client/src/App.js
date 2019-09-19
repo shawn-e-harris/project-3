@@ -3,6 +3,7 @@ import React from 'react';
 // import Activity from './components/activity.js'
 // import User from './components/user.js'
 import Rating from './components/rating.js'
+import Review from './components/review.js'
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       {/* <Activity/> */}
       <Rating/>
+      <Review/>
     </div>
   );
 }
