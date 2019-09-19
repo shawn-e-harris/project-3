@@ -1,51 +1,48 @@
 import React from 'react';
 
-const review = (text) => {
+const listItems = (text) => {
   return (
-    <li>{text}</li>
+    <p>{text}</p>
   )
 }
 
-const reviewListHeader = (headerText) => {
-  return (
-    <h3>{headerText}</h3>
-  )
-}
+// const todoListHeader = (headerText) => {
+//   return (
+//     <h3>{headerText}</h3>
+//   )
+// }
 
-const reviewList = (alist) => {
+const todoList = (alist) => {
 
   return (
     <div>
-      {reviewListHeader(alist.listName)}
-      <ul>
-        {alist.listReviews.map(review)}
-      </ul>
+      {alist.listItems.map(listItems)}
     </div>
   )
 }
 
-const reviewListContainer = (lists, addNewReviewAtIndex) => {
-  return (
-    <div>
-      {lists.map(reviewList)}
-    </div>
-  )
-}
+// const todoListContainer = (lists, addNewItemAtIndex) => {
+//   return (
+//     <div>
+//       {lists.map(todoList)}
+//     </div>
+//   )
+// }
 
-class ReviewForm extends React.Component {
+class ListItemsForm extends React.Component {
 
   state = {
-    newReviewText: ""
+    newItemText: ""
   }
 
   handleInputChange = (evnt) => {
-    this.setState({ newReviewText: evnt.target.value })
+    this.setState({ newItemText: evnt.target.value })
   }
 
   handleFormSubmission = (evnt) => {
     evnt.preventDefault();
 
-    this.props.addNewReviewText(this.state.newReviewText)
+    this.props.addNewListItemsText(this.state.newItemText)
   }
 
   render() {
@@ -53,11 +50,11 @@ class ReviewForm extends React.Component {
       <form onSubmit={this.handleFormSubmission}>
         <input 
           type="text" 
-          placeholder="new review" 
-          value={this.state.newReviewText}  
+          placeholder="new item" 
+          value={this.state.newItemText}  
           onChange={this.handleInputChange}
         />
-        <input type="submit" value="add review" />
+        <input type="submit" value="add item" />
       </form>
     )
   }
@@ -66,30 +63,28 @@ class ReviewForm extends React.Component {
 class App extends React.Component {
 
   state = {
-    reviewList:
-      { listName : "Chores"
-      , listReviews: ["breathe", "eat lunch", "bob"]
-      }
+    todoList:
+    {listItems: [""]}
   }
 
-  addNewReview = (newReviewText) => {
+  addNewItem = (newItemText) => {
 
-    let reviewList = {...this.state.reviewList}
+    let todoList = {...this.state.todoList}
 
-    reviewList.listReviews.push(newReviewText)
+    todoList.listItems.push(newItemText)
 
-    this.setState({ reviewList })
+    this.setState({ todoList })
     
   }
 
   render() {
     return (
       <div>
-        <h1>My Review Lists</h1>
-        <ReviewForm 
-          addNewReviewText={this.sendNewReviewToServer}
+        {/* <h1>My Todo Lists</h1> */}
+        <ListItemsForm 
+          addNewListItemsText={this.addNewItem}
         />
-        {reviewList( this.state.reviewList )}
+        {todoList( this.state.todoList )}
       </div>
     );
   }
