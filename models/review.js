@@ -4,7 +4,7 @@ const mongoose = require('./connection.js')
 
 // CREATE SCHEMEA
 const ReviewSchema = new mongoose.Schema({
- name: String
+  review: String
 })
 
 // CREATE COLLECTION API

@@ -1,13 +1,17 @@
 // IMPORT MONGOOSE
 const mongoose = require('./connection.js')
 const {user} = require("./user")
+const {review} = require("./review")
+const {rating} = require("./rating")
 
 
 // CREATE SCHEMEA
 const ActivitySchema = new mongoose.Schema({
   activityName: String,
   activityLevel: String,
-  user: [userSchema]
+  user: [userSchema],
+  review: [reviewSchema],
+  rating: [ratingSchema]
 })
 
 // CREATE COLLECTION API
