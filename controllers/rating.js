@@ -39,7 +39,7 @@ ratingRouter.get("/ratings/new", function (req, res) {
   ratingApi.addRating(req.params.ratingsId)
     .then((getRatings) => {
       // res.send({getRatings})
-      res.json({getRatings})
+      res.json({ getRatings })
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -49,8 +49,9 @@ ratingRouter.get("/ratings/new", function (req, res) {
 // RENDER CREATEFORM
 ratingRouter.get("/ratings/add", function (req, res) {
   // RENDER NOT CREATED YET
-  res.render("ratingsViewPath", {
-  })
+  // res.render("ratingsViewPath", {
+  // })
+  res.json("ok")
 })
 
 // GET ONE RATING BY ratingId
@@ -70,7 +71,8 @@ ratingRouter.get("/ratings/:ratingsId", function (req, res) {
 ratingRouter.put("/ratings/:ratingsId", function (req, res) {
   ratingApi.updateRating(req.params.ratingsId, req.body)
     .then(() => {
-      res.redirect("/ratings")
+      // res.redirect("/ratings")
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -81,7 +83,8 @@ ratingRouter.put("/ratings/:ratingsId", function (req, res) {
 ratingRouter.delete("/ratings/:ratingsId", function (req, res) {
   ratingApi.deleteRating(req.params.ratingsId)
     .then(() => {
-      res.redirect("/ratings") //redirects to "/", can use any url, etc.
+      // res.redirect("/ratings") //redirects to "/", can use any url, etc.
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console
