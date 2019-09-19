@@ -1,93 +1,81 @@
 import React from 'react';
 
-const listItems = (text) => {
-  return (
-    <p>{text}</p>
-  )
-}
-
-// const todoListHeader = (headerText) => {
-//   return (
-//     <h3>{headerText}</h3>
-//   )
-// }
-
-const todoList = (alist) => {
-
-  return (
-    <div>
-      {alist.listItems.map(listItems)}
-    </div>
-  )
-}
-
-// const todoListContainer = (lists, addNewItemAtIndex) => {
-//   return (
-//     <div>
-//       {lists.map(todoList)}
-//     </div>
-//   )
-// }
-
-class ListItemsForm extends React.Component {
-
-  state = {
-    newItemText: ""
-  }
-
-  handleInputChange = (evnt) => {
-    this.setState({ newItemText: evnt.target.value })
-  }
-
-  handleFormSubmission = (evnt) => {
-    evnt.preventDefault();
-
-    this.props.addNewListItemsText(this.state.newItemText)
-  }
-
-  render() {
+const individualReview = (text) => {
     return (
-      <form onSubmit={this.handleFormSubmission}>
-        <input 
-          type="text" 
-          placeholder="new item" 
-          value={this.state.newItemText}  
-          onChange={this.handleInputChange}
-        />
-        <input type="submit" value="add item" />
-      </form>
+        <p>{text}</p>
     )
-  }
+}
+
+const reviewList = (showReview) => {
+
+    return (
+        <div>
+            {showReview.individualReview.map(individualReview)}
+        </div>
+    )
+}
+
+class IndividualReviewForm extends React.Component {
+
+    state = {
+        newReviewText: ""
+    }
+
+    handleInputChange = (evnt) => {
+        this.setState({ newReviewText: evnt.target.value })
+    }
+
+    handleFormSubmission = (evnt) => {
+        evnt.preventDefault();
+
+        this.props.addNewIndividualReviewText(this.state.newReviewText)
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleFormSubmission}>
+                <textarea
+                    rows="4" 
+                    cols="50"
+                    type="text"
+                    placeholder="New Review"
+                    value={this.state.newReviewText}
+                    onChange={this.handleInputChange}
+                />
+                <input type="submit" value="add item" />
+            </form>
+        )
+    }
 }
 
 class App extends React.Component {
 
-  state = {
-    todoList:
-    {listItems: [""]}
-  }
+    state = {
+        reviewList:
+            { individualReview: [""] }
+    }
 
-  addNewItem = (newItemText) => {
+    addNewItem = (newReviewText) => {
 
-    let todoList = {...this.state.todoList}
+        let reviewList = { ...this.state.reviewList }
 
-    todoList.listItems.push(newItemText)
+        reviewList.individualReview.push(newReviewText)
 
-    this.setState({ todoList })
-    
-  }
+        this.setState({ reviewList })
 
-  render() {
-    return (
-      <div>
-        {/* <h1>My Todo Lists</h1> */}
-        <ListItemsForm 
-          addNewListItemsText={this.addNewItem}
-        />
-        {todoList( this.state.todoList )}
-      </div>
-    );
-  }
+    }
+
+    render() {
+        return (
+            <div>
+                {/* <h1>My Todo Lists</h1> */}
+                <IndividualReviewForm
+                    addNewIndividualReviewText={this.addNewItem}
+                />
+                {reviewList(this.state.reviewList)}
+            </div>
+        );
+    }
 }
 
 export default App;
