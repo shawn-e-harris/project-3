@@ -49,8 +49,9 @@ userRouter.get("/users/new", function (req, res) {
 // RENDER CREATEFORM
 userRouter.get("/users/add", function (req, res) {
   // RENDER NOT CREATED YET
-  res.render("usersViewPath", {
-  })
+  // res.render("usersViewPath", {
+  // })
+  res.json("ok")
 })
 
 // GET ONE USER BY userId
@@ -70,7 +71,8 @@ userRouter.get("/users/:usersId", function (req, res) {
 userRouter.put("/users/:usersId", function (req, res) {
   userApi.updateUser(req.params.usersId, req.body)
     .then(() => {
-      res.redirect("/users")
+      // res.redirect("/users")
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -81,7 +83,8 @@ userRouter.put("/users/:usersId", function (req, res) {
 userRouter.delete("/users/:usersId", function (req, res) {
   userApi.deleteUser(req.params.usersId)
     .then(() => {
-      res.redirect("/users") //redirects to "/", can use any url, etc.
+      // res.redirect("/users") //redirects to "/", can use any url, etc.
+      res.json("ok")
     })
     .catch((error) => {
       console.log(error) //will show error in console
