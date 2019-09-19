@@ -9,9 +9,9 @@ const {rating} = require("./rating")
 const ActivitySchema = new mongoose.Schema({
   activityName: String,
   activityLevel: String,
-  user: [userSchema],
-  review: [reviewSchema],
-  rating: [ratingSchema]
+  // user: [userSchema],
+  // review: [reviewSchema],
+  // rating: [ratingSchema]
 })
 
 // CREATE COLLECTION API

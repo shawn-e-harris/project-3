@@ -7,8 +7,8 @@ const {rating} = require("./rating")
 // CREATE SCHEMEA
 const UserSchema = new mongoose.Schema({
   userName: String,
-  review: [reviewSchema],
-  rating: [ratingSchema]
+  // review: [reviewSchema],
+  // rating: [ratingSchema]
 })
 
 // CREATE COLLECTION API
