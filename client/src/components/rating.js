@@ -1,8 +1,8 @@
 import React from 'react';
 
-const individualRating = (text) => {
+const individualRating = (number) => {
     return (
-        <p>{text}</p>
+        <p>{number}</p>
     )
 }
 
@@ -18,39 +18,36 @@ const ratingList = (showRating) => {
 class IndividualRatingForm extends React.Component {
 
     state = {
-        newRatingNumber: 0
+        newRatingNumber: Number
     }
 
-    handleInputChange = (evnt) => {
-        this.setState({ newRatingNumber: evnt.target.value })
-        console.log()
+    handleInputChange = (event) => {
+        this.setState({ newRatingNumber: event.target.value })
     }
 
-    handleFormSubmission = (evnt) => {
-        evnt.preventDefault();
+    handleFormSubmission = (event) => {
+        event.preventDefault();
 
         this.props.addNewIndividualRatingNumber(this.state.newRatingNumber)
     }
 
     render() {
-        console.log("counter after increment: ", this.state.newRatingNumber)
+        // console.log("counter after increment: ", this.state.newRatingNumber)
         return (
             <form onSubmit={this.handleFormSubmission}>
                 <input
                     type="number"
-                    placeholder="Rating"
-                    name="New Rating"
+                    placeholder="New Review"
                     value={this.state.newRatingNumber}
                     onChange={this.handleInputChange}
                 />
-                <input type="submit" value="Add Rating" />
+                <input type="submit" value="Add Review" />
             </form>
         )
     }
-
 }
 
-class AppRating extends React.Component {
+class AppReview extends React.Component {
 
     state = {
         ratingList: {
@@ -59,24 +56,23 @@ class AppRating extends React.Component {
     }
 
     addNewRating = (newRatingNumber) => {
-        
-        let ratingList = [...this.state.ratingList]
-        console.log(newRatingNumber)
-        
-        newRatingNumber.individualRating = Number(newRatingNumber.individualRating);
-        console.log(newRatingNumber)
-        
-        ratingList.individualRating.push(newRatingNumber)
-        
-        this.setState({ ratingList })
-      }
 
-  render() {
+        let ratingList = { ...this.state.ratingList }
+        console.log("counter before Number: ",typeof newRatingNumber)
+        newRatingNumber = Number(newRatingNumber)
+        console.log("counter after Number: ",typeof newRatingNumber)
+        ratingList.individualRating.push(newRatingNumber)
+
+        this.setState({ ratingList })
+
+    }
+
+    render() {
         return (
             <div>
                 <h1>My Rating</h1>
                 <IndividualRatingForm
-                    addNewindividualRatingNumber={this.addNewRating}
+                    addNewIndividualRatingNumber={this.addNewRating}
                 />
                 {ratingList(this.state.ratingList)}
             </div>
@@ -84,4 +80,6 @@ class AppRating extends React.Component {
     }
 }
 
-export default AppRating;
+
+
+export default AppReview;
