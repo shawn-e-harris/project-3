@@ -32,7 +32,6 @@ class IndividualRatingForm extends React.Component {
     }
 
     render() {
-        // console.log("counter after increment: ", this.state.newRatingNumber)
         return (
             <form onSubmit={this.handleFormSubmission}>
                 <input

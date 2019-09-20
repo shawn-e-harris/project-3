@@ -6,7 +6,7 @@ const individualReview = (text) => {
     )
 }
 
-const reviewList = (showReview) => {
+const reviewList = (showReview, addNewReviewIndex) => {
 
     return (
         <div>
