@@ -6,7 +6,7 @@ const individualReview = (text) => {
     )
 }
 
-const reviewList = (showReview, addNewReviewIndex) => {
+const reviewList = (showReview) => {
 
     return (
         <div>
@@ -48,7 +48,7 @@ class IndividualReviewForm extends React.Component {
     }
 }
 
-class AppReview extends React.Component {
+class App extends React.Component {
 
     state = {
         reviewList: {
@@ -79,4 +79,4 @@ class AppReview extends React.Component {
     }
 }
 
-export default AppReview;
+export default App;

@@ -46,7 +46,7 @@ class IndividualRatingForm extends React.Component {
     }
 }
 
-class AppReview extends React.Component {
+class App extends React.Component {
 
     state = {
         ratingList: {
@@ -81,4 +81,4 @@ class AppReview extends React.Component {
 
 
 
-export default AppReview;
+export default App;

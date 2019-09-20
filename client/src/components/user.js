@@ -1,11 +1,80 @@
-import React from 'react'
+import React from 'react';
 
-const review = (props) => {
-return (
-    <div>
-        <button onClick={props.doWhatever}>{props.title}</button>
-    </div>
-)
-} 
+const individualUser = (text) => {
+    return (
+        <p>{text}</p>
+    )
+}
 
-export default review;
+const userList = (showUser) => {
+
+    return (
+        <div>
+            {showUser.individualUser.map(individualUser)}
+        </div>
+    )
+}
+
+class IndividualUserForm extends React.Component {
+
+    state = {
+        newUserText: ""
+    }
+
+    handleInputChange = (event) => {
+        this.setState({ newUserText: event.target.value })
+    }
+
+    handleFormSubmission = (event) => {
+        event.preventDefault();
+
+        this.props.addNewIndividualUserText(this.state.newUserText)
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleFormSubmission}>
+                <input
+                    type="text"
+                    placeholder="New User"
+                    value={this.state.newUserText}
+                    onChange={this.handleInputChange}
+                />
+                <input type="submit" value="Add User" />
+            </form>
+        )
+    }
+}
+
+class App extends React.Component {
+
+    state = {
+        userList: {
+            individualUser: [""] 
+        }
+    }
+
+    addNewUser = (newUserText) => {
+
+        let userList = { ...this.state.userList }
+
+        userList.individualUser.push(newUserText)
+
+        this.setState({ userList })
+
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>User</h1>
+                <IndividualUserForm
+                    addNewIndividualUserText={this.addNewUser}
+                />
+                {userList(this.state.userList)}
+            </div>
+        );
+    }
+}
+
+export default App;
