@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const individualRating = (number) => {
     return (
@@ -6,7 +6,7 @@ const individualRating = (number) => {
     )
 }
 
-const ratingList = (showRating) => {
+const ratingList = (showRating, ratingIndex) => {
 
     return (
         <div>
@@ -15,7 +15,7 @@ const ratingList = (showRating) => {
     )
 }
 
-class IndividualRatingForm extends React.Component {
+class IndividualRatingForm extends Component {
 
     state = {
         newRatingNumber: Number
@@ -46,7 +46,7 @@ class IndividualRatingForm extends React.Component {
     }
 }
 
-class App extends React.Component {
+class AppRating extends React.Component {
 
     state = {
         ratingList: {
@@ -81,4 +81,4 @@ class App extends React.Component {
 
 
 
-export default App;
+export default AppRating;

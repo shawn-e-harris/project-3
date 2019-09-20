@@ -1,4 +1,6 @@
 import React from 'react';
+import {AppRating} from "./rating"
+import {AppReview} from "./review"
 
 const individualUser = (text) => {
     return (
@@ -6,7 +8,7 @@ const individualUser = (text) => {
     )
 }
 
-const userList = (showUser) => {
+const userList = (showUser, userIndex) => {
 
     return (
         <div>
@@ -18,7 +20,7 @@ const userList = (showUser) => {
 class IndividualUserForm extends React.Component {
 
     state = {
-        newUserText: ""
+        newUserText: "",
     }
 
     handleInputChange = (event) => {
@@ -72,6 +74,8 @@ class App extends React.Component {
                     addNewIndividualUserText={this.addNewUser}
                 />
                 {userList(this.state.userList)}
+                {AppRating}
+                {AppReview}
             </div>
         );
     }

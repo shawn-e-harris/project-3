@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const individualReview = (text) => {
     return (
@@ -6,7 +6,7 @@ const individualReview = (text) => {
     )
 }
 
-const reviewList = (showReview) => {
+const reviewList = (showReview, reviewIndex) => {
 
     return (
         <div>
@@ -15,7 +15,7 @@ const reviewList = (showReview) => {
     )
 }
 
-class IndividualReviewForm extends React.Component {
+class IndividualReviewForm extends Component {
 
     state = {
         newReviewText: ""
@@ -48,7 +48,7 @@ class IndividualReviewForm extends React.Component {
     }
 }
 
-class App extends React.Component {
+class AppReview extends React.Component {
 
     state = {
         reviewList: {
@@ -79,4 +79,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default AppReview;
