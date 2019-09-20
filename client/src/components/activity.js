@@ -1,40 +1,81 @@
-import React, { Component } from 'react'
-import User from "./user";
+import React, { Component } from 'react';
 
-// const getActivitiesFromServer = () => 
-//     fetch('/activites') //activites is a path "prefix"
-//         .then(res => res.json())
+const individualActivity = (text) => {
+    return (
+        <p>{text}</p>
+    )
+}
 
-// const getSingleActivity = (id) =>
-//     fetch(`/activites/${id}`)
+const activityList = (showActivity, activityIndex) => {
 
-class App extends Component {
+    return (
+        <div>
+            {showActivity.individualActivity.map(individualActivity)}
+        </div>
+    )
+}
+
+class IndividualActivityForm extends Component {
+
     state = {
-        title: "placeholder title"
+        newActivityText: ""
     }
 
-    // componentDidMount() {
-        // this.setActivitiesFromServer();
-    // }
+    handleInputChange = (event) => {
+        this.setState({ newActivityText: event.target.value })
+    }
 
-    // setActivitiesFromServer () {
-    //     getActivitiesFromServer.then(allActivities => {
-            
-    //     })
-    // }
+    handleFormSubmission = (event) => {
+        event.preventDefault();
 
-    // changeTheWorld = (newTitle) => {
-    //     this.setState({title:newTitle})
-    // }
+        this.props.addNewIndividualActivityText(this.state.newActivityText)
+    }
+
     render() {
         return (
-            <div className="App">
-                Hellooooooo
-                <User />
-                {/* <User doWhatever={this.changeTheWorld.bind(this, "newWorld")} title={this.state.title}/> */}
-            </div>
+            <form onSubmit={this.handleFormSubmission}>
+                <input
+                    type="text"
+                    placeholder="New Activity"
+                    value={this.state.newActivityText}
+                    onChange={this.handleInputChange}
+                />
+                <input type="submit" value="Add Activity" />
+            </form>
         )
     }
 }
 
-export default App
+class AppActivity extends React.Component {
+
+    state = {
+        activityList: {
+            individualActivity: [""],
+            energyLevel: [""] 
+        }
+    }
+
+    addNewActivity = (newActivityText) => {
+
+        let activityList = { ...this.state.activityList }
+
+        activityList.individualActivity.push(newActivityText)
+
+        this.setState({ activityList })
+
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Activity</h1>
+                <IndividualActivityForm
+                    addNewIndividualActivityText={this.addNewActivity}
+                />
+                {activityList(this.state.activityList)}
+            </div>
+        );
+    }
+}
+
+export default AppActivity;

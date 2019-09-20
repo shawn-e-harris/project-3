@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import AppReview from "./review"
 
 const individualRating = (number) => {
     return (
-        <p>{number}</p>
+        <div>
+            <p>{number}</p>
+            <AppReview />
+        </div>
     )
 }
 
@@ -57,9 +61,9 @@ class AppRating extends React.Component {
     addNewRating = (newRatingNumber) => {
 
         let ratingList = { ...this.state.ratingList }
-        console.log("counter before Number: ",typeof newRatingNumber)
+        console.log("counter before Number: ", typeof newRatingNumber)
         newRatingNumber = Number(newRatingNumber)
-        console.log("counter after Number: ",typeof newRatingNumber)
+        console.log("counter after Number: ", typeof newRatingNumber)
         ratingList.individualRating.push(newRatingNumber)
 
         this.setState({ ratingList })

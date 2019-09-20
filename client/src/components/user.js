@@ -1,13 +1,13 @@
 import React from 'react';
 import AppRating from "./rating"
-import AppReview from "./review"
+// import AppReview from "./review"
 
 const individualUser = (text) => {
     return (
         <div>
             <p>UserName: {text}</p>
             <AppRating />
-            <AppReview />
+            {/* <AppReview /> */}
         </div>
     )
 }
