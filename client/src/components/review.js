@@ -21,12 +21,12 @@ class IndividualReviewForm extends React.Component {
         newReviewText: ""
     }
 
-    handleInputChange = (evnt) => {
-        this.setState({ newReviewText: evnt.target.value })
+    handleInputChange = (event) => {
+        this.setState({ newReviewText: event.target.value })
     }
 
-    handleFormSubmission = (evnt) => {
-        evnt.preventDefault();
+    handleFormSubmission = (event) => {
+        event.preventDefault();
 
         this.props.addNewIndividualReviewText(this.state.newReviewText)
     }
@@ -42,20 +42,21 @@ class IndividualReviewForm extends React.Component {
                     value={this.state.newReviewText}
                     onChange={this.handleInputChange}
                 />
-                <input type="submit" value="add item" />
+                <input type="submit" value="Add Review" />
             </form>
         )
     }
 }
 
-class App extends React.Component {
+class AppReview extends React.Component {
 
     state = {
-        reviewList:
-            { individualReview: [""] }
+        reviewList: {
+            individualReview: [""] 
+        }
     }
 
-    addNewItem = (newReviewText) => {
+    addNewReview = (newReviewText) => {
 
         let reviewList = { ...this.state.reviewList }
 
@@ -68,9 +69,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {/* <h1>My Todo Lists</h1> */}
+                <h1>My Review</h1>
                 <IndividualReviewForm
-                    addNewIndividualReviewText={this.addNewItem}
+                    addNewIndividualReviewText={this.addNewReview}
                 />
                 {reviewList(this.state.reviewList)}
             </div>
@@ -78,4 +79,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default AppReview;
