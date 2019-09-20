@@ -1,10 +1,14 @@
 import React from 'react';
-import {AppRating} from "./rating"
-import {AppReview} from "./review"
+import AppRating from "./rating"
+import AppReview from "./review"
 
 const individualUser = (text) => {
     return (
-        <p>{text}</p>
+        <div>
+            <p>UserName: {text}</p>
+            <AppRating />
+            <AppReview />
+        </div>
     )
 }
 
@@ -48,11 +52,11 @@ class IndividualUserForm extends React.Component {
     }
 }
 
-class App extends React.Component {
+class AppUser extends React.Component {
 
     state = {
         userList: {
-            individualUser: [""] 
+            individualUser: [""]
         }
     }
 
@@ -74,11 +78,9 @@ class App extends React.Component {
                     addNewIndividualUserText={this.addNewUser}
                 />
                 {userList(this.state.userList)}
-                {AppRating}
-                {AppReview}
             </div>
         );
     }
 }
 
-export default App;
+export default AppUser;
