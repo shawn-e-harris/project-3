@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+// import "../App.js"
+// import Button from '@material-ui/core/Button';
+import { red } from '@material-ui/core/colors';
 
 const individualActivity = (text) => {
     return (
         <p>{text}</p>
     )
 }
+
+// const styling = {
+//     button: {backgroundColor: "red"},
+// }
 
 const activityList = (showActivity, activityIndex) => {
 
@@ -40,7 +47,9 @@ class IndividualActivityForm extends Component {
                     value={this.state.newActivityText}
                     onChange={this.handleInputChange}
                 />
+                
                 <input type="submit" value="Add Activity" />
+                {/* <Button className={styling.button}/> */}
             </form>
         )
     }

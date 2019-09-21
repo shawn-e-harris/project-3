@@ -1,15 +1,31 @@
 import React from 'react';
-// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import User from './components/user.js'
-import AppActivity from './components/activity.js'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+// import AppActivity from './components/activity.js'
+import AppUser from './components/user.js'
+// import AppRating from './components/rating.js'
+import AppReview from './components/review.js'
 import './App.css';
 
-function App() {
+// function App() {
+//   return (
+//     <div>
+//       <AppActivity/>
+//       <AppUser/>
+//       {/* <AppRating/> */}
+//       <AppReview/>
+//     </div>
+//   );
+// }
+
+export default function App() {
   return (
     <div>
-      <AppActivity/>
-    </div>
-  );
-}
+      <Router>
+        <Switch>
+          <Route exact path="/" component={AppUser} />
 
-export default App;
+        </Switch>
+      </Router>
+    </div>
+  )
+}

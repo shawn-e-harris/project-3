@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import AppReview from "./review"
+import IndividualReviewForm from "./review";
 
 const individualRating = (number) => {
     return (
         <div>
             <p>{number}</p>
-            <AppReview />
         </div>
     )
 }
@@ -22,7 +21,7 @@ const ratingList = (showRating, ratingIndex) => {
 class IndividualRatingForm extends Component {
 
     state = {
-        newRatingNumber: Number
+        newRatingNumber: Number,
     }
 
     handleInputChange = (event) => {
@@ -40,11 +39,11 @@ class IndividualRatingForm extends Component {
             <form onSubmit={this.handleFormSubmission}>
                 <input
                     type="number"
-                    placeholder="New Review"
+                    placeholder="New Rating"
                     value={this.state.newRatingNumber}
                     onChange={this.handleInputChange}
                 />
-                <input type="submit" value="Add Review" />
+                <input type="submit" value="Add Rating" />
             </form>
         )
     }
@@ -54,7 +53,8 @@ class AppRating extends React.Component {
 
     state = {
         ratingList: {
-            individualRating: [Number]
+            individualRating: [Number],
+            hasEnteredRatingNumber: false,
         }
     }
 
@@ -65,7 +65,8 @@ class AppRating extends React.Component {
         newRatingNumber = Number(newRatingNumber)
         console.log("counter after Number: ", typeof newRatingNumber)
         ratingList.individualRating.push(newRatingNumber)
-
+        this.setState({individualRating: individualRating})
+        this.setState({hasEnteredRatingNumber: true})
         this.setState({ ratingList })
 
     }
@@ -73,11 +74,14 @@ class AppRating extends React.Component {
     render() {
         return (
             <div>
-                <h1>My Rating</h1>
+                {/* <h1>My Rating</h1> */}
                 <IndividualRatingForm
                     addNewIndividualRatingNumber={this.addNewRating}
                 />
                 {ratingList(this.state.ratingList)}
+                {this.state.hasEnteredRatingNumber ? <IndividualReviewForm
+                    addNewIndividualReviewText={this.addNewReview}
+                /> : null }  
             </div>
         );
     }

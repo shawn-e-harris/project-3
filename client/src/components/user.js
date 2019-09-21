@@ -1,13 +1,10 @@
 import React from 'react';
-import AppRating from "./rating"
-// import AppReview from "./review"
+import IndividualRatingForm from "./rating";
 
 const individualUser = (text) => {
     return (
         <div>
-            <p>UserName: {text}</p>
-            <AppRating />
-            {/* <AppReview /> */}
+            <p>{text}</p>
         </div>
     )
 }
@@ -56,7 +53,8 @@ class AppUser extends React.Component {
 
     state = {
         userList: {
-            individualUser: [""]
+            individualUser: [""],
+            hasEnteredUserText: false
         }
     }
 
@@ -65,9 +63,9 @@ class AppUser extends React.Component {
         let userList = { ...this.state.userList }
 
         userList.individualUser.push(newUserText)
-
+        this.setState({individualUser: individualUser})
+        this.setState({hasEnteredUserText: true})
         this.setState({ userList })
-
     }
 
     render() {
@@ -78,6 +76,9 @@ class AppUser extends React.Component {
                     addNewIndividualUserText={this.addNewUser}
                 />
                 {userList(this.state.userList)}
+                {this.state.hasEnteredUserText ? <IndividualRatingForm
+                    addNewIndividualRatingNumber={this.addNewRating}
+                /> : null }
             </div>
         );
     }

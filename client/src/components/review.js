@@ -69,7 +69,7 @@ class AppReview extends React.Component {
     render() {
         return (
             <div>
-                <h1>My Review</h1>
+                {/* <h1>My Review</h1> */}
                 <IndividualReviewForm
                     addNewIndividualReviewText={this.addNewReview}
                 />
