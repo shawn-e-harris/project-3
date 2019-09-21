@@ -4,7 +4,8 @@ const mongoose = require('./connection.js')
 
 // CREATE SCHEMEA
 const RatingSchema = new mongoose.Schema({
-  rating: Number
+  rating: Number,
+  userId: mongoose.Types.ObjectId
 })
 
 // CREATE COLLECTION API
@@ -23,8 +24,8 @@ const getOneRating = (ratingId) => {
 }
 
 // CREATE/ post
-const addRating = (newRating) => {
-  return ratingCollection.create(newRating)
+const addRating = (newRating, usersId) => {
+  return ratingCollection.create(newRating.usersId)
 }
 
 // UPDATE/ edit

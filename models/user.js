@@ -1,14 +1,10 @@
 // IMPORT MONGOOSE
 const mongoose = require('./connection.js')
-const {review} = require("./review")
-const {rating} = require("./rating")
-
 
 // CREATE SCHEMEA
 const UserSchema = new mongoose.Schema({
   userName: String,
-  // review: [reviewSchema],
-  // rating: [ratingSchema]
+  activitiesId: mongoose.Types.ObjectId
 })
 
 // CREATE COLLECTION API
@@ -18,7 +14,7 @@ const userCollection = mongoose.model('User', UserSchema)
 
 // GET/ read
 const getAllUsers = () => {
-  return userCollection.find();
+  return userCollection.find({_id: activitiesId});
 }
 
 // GET/ read
@@ -27,7 +23,8 @@ const getOneUser = (userId) => {
 }
 
 // CREATE/ post
-const addUser = (newUser) => {
+const addUser = (newUser, activitiesId) => {
+  newUser.activitiesId = activitiesId
   return userCollection.create(newUser)
 }
 

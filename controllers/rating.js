@@ -5,7 +5,10 @@ const express = require('express')
 const ratingApi = require('../models/rating.js')
 
 // CREATE NEW ROUTER TO CONTAIN ALL REQ HANDLERS
-const ratingRouter = express.Router()
+const ratingRouter = express.Router({
+  // need to merge parameters for router to give access to parent
+  mergeParams: true
+})
 
 // REQ HANDLERS ****************
 

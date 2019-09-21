@@ -4,7 +4,8 @@ const mongoose = require('./connection.js')
 
 // CREATE SCHEMEA
 const ReviewSchema = new mongoose.Schema({
-  review: String
+  review: String,
+  usersId: mongoose.Types.ObjectId
 })
 
 // CREATE COLLECTION API
@@ -14,7 +15,7 @@ const reviewCollection = mongoose.model('Review', ReviewSchema)
 
 // GET/ read
 const getAllReviews = () => {
-  return reviewCollection.find();
+  return reviewCollection.find({_id: usersId});
 }
 
 // GET/ read
@@ -23,7 +24,8 @@ const getOneReview = (reviewId) => {
 }
 
 // CREATE/ post
-const addReview = (newReview) => {
+const addReview = (newReview, usersId) => {
+  newReview.usersId = usersId
   return reviewCollection.create(newReview)
 }
 

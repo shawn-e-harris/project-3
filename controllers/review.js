@@ -5,7 +5,10 @@ const express = require('express')
 const reviewApi = require('../models/review.js')
 
 // CREATE NEW ROUTER TO CONTAIN ALL REQ HANDLERS
-const reviewRouter = express.Router()
+const reviewRouter = express.Router({
+  // need to merge parameters for router to give access to parent
+  mergeParams: true
+})
 
 // REQ HANDLERS ****************
 
@@ -24,10 +27,10 @@ reviewRouter.get("/reviews", function (req, res) {
 
 // CREATE NEW REVIEWS
 reviewRouter.post("/reviews", function (req, res) {
-  reviewApi.addReview(req.body)
-    .then(() => {
+  reviewApi.addReview(req.body, req.params.usersId)
+    .then((review) => {
       // res.redirect("/reviews")
-      res.json("ok")
+      res.json(review)
     })
     .catch((error) => {
       console.log(error) //will show error in console

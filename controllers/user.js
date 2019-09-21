@@ -5,7 +5,10 @@ const express = require('express')
 const userApi = require('../models/user.js')
 
 // CREATE NEW ROUTER TO CONTAIN ALL REQ HANDLERS
-const userRouter = express.Router()
+const userRouter = express.Router({
+  // need to merge parameters for router to give access to parent
+  mergeParams: true
+})
 
 // REQ HANDLERS ****************
 
