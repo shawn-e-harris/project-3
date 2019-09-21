@@ -28,9 +28,9 @@ reviewRouter.get("/reviews", function (req, res) {
 // CREATE NEW REVIEWS
 reviewRouter.post("/reviews", function (req, res) {
   reviewApi.addReview(req.body, req.params.usersId)
-    .then((review) => {
+    .then((reviews) => {
       // res.redirect("/reviews")
-      res.json(review)
+      res.json(reviews)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -73,9 +73,9 @@ reviewRouter.get("/reviews/:reviewsId", function (req, res) {
 // EDIT REVIEW
 reviewRouter.put("/reviews/:reviewsId", function (req, res) {
   reviewApi.updateReview(req.params.reviewsId, req.body)
-    .then(() => {
+    .then((reviews) => {
       // res.redirect("/reviews")
-      res.json("ok")
+      res.json(reviews)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -87,7 +87,7 @@ reviewRouter.delete("/reviews/:reviewsId", function (req, res) {
   reviewApi.deleteReview(req.params.reviewsId)
     .then(() => {
       // res.redirect("/reviews") //redirects to "/", can use any url, etc.
-      res.json("ok")
+      res.json(reviews)
     })
     .catch((error) => {
       console.log(error) //will show error in console

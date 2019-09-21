@@ -26,9 +26,9 @@ activityRouter.get("/activities", function (req, res) {
 // CREATE NEW ACTIVITIES
 activityRouter.post("/activities", function (req, res) {
   activityApi.addActivity(req.body)
-    .then(() => {
+    .then((activities) => {
       // res.redirect("/activities")
-      res.json("ok")
+      res.json(activities)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -71,9 +71,9 @@ activityRouter.get("/activities/:activitiesId", function (req, res) {
 // EDIT ACTIVITY
 activityRouter.put("/activities/:activitiesId", function (req, res) {
   activityApi.updateActivity(req.params.activitiesId, req.body)
-    .then(() => {
+    .then((activities) => {
       // res.redirect("/activities")
-      res.json("ok")
+      res.json(activities)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -83,9 +83,9 @@ activityRouter.put("/activities/:activitiesId", function (req, res) {
 // DELETE ACTIVITY
 activityRouter.delete("/activities/:activitiesId", function (req, res) {
   activityApi.deleteActivity(req.params.activitiesId)
-    .then(() => {
+    .then((activities) => {
       // res.redirect("/activities") //redirects to "/", can use any url, etc.
-      res.json("ok")
+      res.json(activities)
     })
     .catch((error) => {
       console.log(error) //will show error in console

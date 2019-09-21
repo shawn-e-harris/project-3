@@ -3,9 +3,7 @@ import IndividualRatingForm from "./rating";
 
 const individualUser = (text) => {
     return (
-        <div>
             <p>{text}</p>
-        </div>
     )
 }
 

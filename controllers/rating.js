@@ -28,9 +28,9 @@ ratingRouter.get("/ratings", function (req, res) {
 // CREATE NEW RATINGS
 ratingRouter.post("/ratings", function (req, res) {
   ratingApi.addRating(req.body)
-    .then(() => {
+    .then((ratings) => {
       // res.redirect("/ratings")
-      res.json("ok")
+      res.json(ratings)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -73,9 +73,9 @@ ratingRouter.get("/ratings/:ratingsId", function (req, res) {
 // EDIT RATING
 ratingRouter.put("/ratings/:ratingsId", function (req, res) {
   ratingApi.updateRating(req.params.ratingsId, req.body)
-    .then(() => {
+    .then((ratings) => {
       // res.redirect("/ratings")
-      res.json("ok")
+      res.json(ratings)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -85,9 +85,9 @@ ratingRouter.put("/ratings/:ratingsId", function (req, res) {
 // DELETE RATING
 ratingRouter.delete("/ratings/:ratingsId", function (req, res) {
   ratingApi.deleteRating(req.params.ratingsId)
-    .then(() => {
+    .then((ratings) => {
       // res.redirect("/ratings") //redirects to "/", can use any url, etc.
-      res.json("ok")
+      res.json(ratings)
     })
     .catch((error) => {
       console.log(error) //will show error in console

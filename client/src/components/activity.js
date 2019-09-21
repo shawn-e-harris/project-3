@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import "../App.js"
 // import Button from '@material-ui/core/Button';
 import { red } from '@material-ui/core/colors';
+import IndividualUserForm from "./user"
 
 const individualActivity = (text) => {
     return (
@@ -60,7 +60,8 @@ class AppActivity extends React.Component {
     state = {
         activityList: {
             individualActivity: [""],
-            energyLevel: [""] 
+            energyLevel: [""],
+            hasEnteredActivityText: false
         }
     }
 
@@ -69,7 +70,8 @@ class AppActivity extends React.Component {
         let activityList = { ...this.state.activityList }
 
         activityList.individualActivity.push(newActivityText)
-
+        this.setState({individualActivity: individualActivity})
+        this.setState({hasEnteredActivityText: true})
         this.setState({ activityList })
 
     }
@@ -82,6 +84,9 @@ class AppActivity extends React.Component {
                     addNewIndividualActivityText={this.addNewActivity}
                 />
                 {activityList(this.state.activityList)}
+                {this.state.hasEnteredActivityText ? <IndividualUserForm
+                    addNewIndividualUserText={this.addNewUser}
+                /> : null }
             </div>
         );
     }

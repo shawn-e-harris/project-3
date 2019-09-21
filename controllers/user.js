@@ -28,9 +28,9 @@ userRouter.get("/users", function (req, res) {
 // CREATE NEW USERS
 userRouter.post("/users", function (req, res) {
   userApi.addUser(req.body)
-    .then(() => {
+    .then((users) => {
       // res.redirect("/users")
-      res.json("ok")
+      res.json(users)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -73,9 +73,9 @@ userRouter.get("/users/:usersId", function (req, res) {
 // EDIT USER
 userRouter.put("/users/:usersId", function (req, res) {
   userApi.updateUser(req.params.usersId, req.body)
-    .then(() => {
+    .then((users) => {
       // res.redirect("/users")
-      res.json("ok")
+      res.json(users)
     })
     .catch((error) => {
       console.log(error) //will show error in console
@@ -85,9 +85,9 @@ userRouter.put("/users/:usersId", function (req, res) {
 // DELETE USER
 userRouter.delete("/users/:usersId", function (req, res) {
   userApi.deleteUser(req.params.usersId)
-    .then(() => {
+    .then((users) => {
       // res.redirect("/users") //redirects to "/", can use any url, etc.
-      res.json("ok")
+      res.json(users)
     })
     .catch((error) => {
       console.log(error) //will show error in console

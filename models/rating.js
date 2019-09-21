@@ -25,7 +25,8 @@ const getOneRating = (ratingId) => {
 
 // CREATE/ post
 const addRating = (newRating, usersId) => {
-  return ratingCollection.create(newRating.usersId)
+  newRating.usersId = usersId
+  return ratingCollection.create(newRating)
 }
 
 // UPDATE/ edit
