@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Axios from "axios"
 
 
@@ -11,13 +11,13 @@ export default class ActivityReact extends Component {
     getActivitiesFromServer = () => {
         Axios.get("/activities") //get prefix
             .then(results => { //create promise
-                this.setState({activities: results.data.allActivities})
+                this.setState({ activities: results.data.allActivities })
                 console.log(results)
                 console.table(results.data.allActivities)
-            }) 
+            })
             .catch(error => {
                 console.log(error)
-            })       
+            })
     }
 
 
@@ -38,8 +38,15 @@ export default class ActivityReact extends Component {
         return (
             <div className="App">
                 Hellooooooo
-                {/* <User /> */}
-                {/* <User doWhatever={this.changeTheWorld.bind(this, "newWorld")} title={this.state.title}/> */}
+                {this.state.activities.map(activity => {
+                    return (
+                        <div>
+                            <p>
+                                {activity._id}
+                            </p>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
