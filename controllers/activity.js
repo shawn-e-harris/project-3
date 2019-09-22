@@ -20,7 +20,6 @@ activityRouter.get("/activities", function (req, res) {
     .catch((error) => {
       console.log(error) //will show error in console
     })
-  console.log("banana")
 })
 
 // CREATE NEW ACTIVITIES

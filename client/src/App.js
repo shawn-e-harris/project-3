@@ -1,22 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 // import AppActivity from './components/activity.js'
 // import AppUser from './components/user.js'
 // import AppRating from './components/rating.js'
-import AppReview from './components/review.js'
+import IndividualReviewForm from './components/review.js'
 import ActivityReact from "./components/activityFolder/activityReact"
 import './App.css';
-
-// function App() {
-//   return (
-//     <div>
-//       <AppActivity/>
-//       <AppUser/>
-//       {/* <AppRating/> */}
-//       <AppReview/>
-//     </div>
-//   );
-// }
 
 export default function App() {
   return (
@@ -25,6 +14,7 @@ export default function App() {
         <Switch>
 
           <Route exact path="/" component={ActivityReact} />
+          <Route exact path="/activities" component={IndividualReviewForm} />
 
         </Switch>
       </Router>
