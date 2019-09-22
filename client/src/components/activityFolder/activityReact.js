@@ -9,37 +9,52 @@ export default class ActivityReact extends Component {
         activities: []
     }
 
+    // GET ALL ACTIVITIES FROM SERVER
     getActivitiesFromServer = () => {
         Axios.get("/activities") //get prefix
             .then(results => { //create promise
-                this.setState({ activities: results.data.allActivities })
+                this.setState({activities: results.data.allActivities})
                 console.log(results)
-                console.table(results.data.allActivities)
+                // console.table(results.data.allActivities)
             })
             .catch(error => {
                 console.log(error)
             })
     }
 
-    getSingleActivityFromServer = () => {
-        Axios.get("/activities/activitiesId") //get prefix
+    // ADD ACTIVITY TO SERVER
+    addActivityToServer = (activity) => {
+        Axios.post("/activities", { activity })
+            .then(results => {
+                this.setState({ results })
+                console.log(results)
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    // GET SINGLE ACTIVITY FROM SERVER
+    getSingleActivityFromServer = (activitiesId) => {
+        Axios.get(`/activities/${activitiesId}`) //get prefix
             .then(results => { //create promise
-                // this.setState({ activities: results.data })
+                this.setState({ activities: results.data })
                 console.log(results)
-                // console.table(results.data)
+                console.table(results.data)
             })
             .catch(error => {
                 console.log(error)
             })
     }
-
-    // componentDidMount() {
-    //     this.getSingleActivityFromServer();
-    // }
 
     componentDidMount() {
         this.getActivitiesFromServer();
+        // this.addActivityToServer();
+        // this.getSingleActivityFromServer();
     }
+
+
 
     // getActivitiesFromServer() {
     //     getActivitiesFromServer.then(allActivities => {
@@ -53,15 +68,17 @@ export default class ActivityReact extends Component {
     render() {
         return (
             <div className="App">
-                Hellooooooo
+
                 <IndividualActivityForm
                     addNewIndividualActivityText={this.addNewActivity}
+                    addNewIndividualEnergyLevel={this.addNewEnergyLevel}
                 />
                 {this.state.activities.map(activity => {
                     return (
                         <div>
                             <p>
-                                {activity._id}
+                                {activity.activityName}
+
                             </p>
                         </div>
                     )

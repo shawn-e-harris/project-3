@@ -13,8 +13,10 @@ export default function App() {
       <Router>
         <Switch>
 
-          <Route exact path="/" component={ActivityReact} />
-          <Route exact path="/activities" component={IndividualReviewForm} />
+          <Route exact path="/" component={ActivityReact}/>
+          {/* <Route exact path="/activites" component={} */}
+          
+          {/* <Route exact path="/activities" component={IndividualReviewForm} /> */}
 
         </Switch>
       </Router>
