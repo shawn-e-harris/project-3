@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Button from '@material-ui/core/Button';
-import { red } from '@material-ui/core/colors';
-import IndividualUserForm from "./user"
+// import { red } from '@material-ui/core/colors';
+// import IndividualUserForm from "./user"
 import Axios from "axios"
 
 const individualActivity = (text) => {
@@ -132,7 +132,7 @@ class AppActivity extends React.Component {
 
     }
 
-    addactivityLevel = (activityLevel) => {
+    addActivityLevel = (activityLevel) => {
 
         let activityList = { ...this.state.activityList }
 
@@ -149,7 +149,7 @@ class AppActivity extends React.Component {
                 <h1>Activity</h1>
                 <IndividualActivityForm
                     addNewIndividualActivityText={this.addNewActivity}
-                    addNewIndividualEnergyLevel={this.addactivityLevel}
+                    addNewIndividualEnergyLevel={this.addActivityLevel}
 
                 />
                 {activityList(this.state.activityList)}

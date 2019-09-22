@@ -13,7 +13,7 @@ export default class ActivityReact extends Component {
     getActivitiesFromServer = () => {
         Axios.get("/activities") //get prefix
             .then(results => { //create promise
-                this.setState({activities: results.data.allActivities})
+                this.setState({ activities: results.data.allActivities })
                 console.log(results)
                 // console.table(results.data.allActivities)
             })
@@ -54,17 +54,6 @@ export default class ActivityReact extends Component {
         // this.getSingleActivityFromServer();
     }
 
-
-
-    // getActivitiesFromServer() {
-    //     getActivitiesFromServer.then(allActivities => {
-
-    //     })
-    // }
-
-    changeTheWorld = (newTitle) => {
-        this.setState({ title: newTitle })
-    }
     render() {
         return (
             <div className="App">
@@ -75,12 +64,14 @@ export default class ActivityReact extends Component {
                 />
                 {this.state.activities.map(activity => {
                     return (
-                        <div>
-                            <p>
+                        <ul>
+                            <li>
                                 {activity.activityName}
-
-                            </p>
-                        </div>
+                            </li>
+                            <li>
+                                {activity.activityLevel}
+                            </li>
+                        </ul>
                     )
                 })}
             </div>

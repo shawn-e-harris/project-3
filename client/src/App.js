@@ -5,20 +5,20 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 // import AppRating from './components/rating.js'
 import IndividualReviewForm from './components/review.js'
 import ActivityReact from "./components/activityFolder/activityReact"
+import UserReact from "./components/userFolder/userReact"
 import './App.css';
 
 export default function App() {
   return (
     <div>
       <Router>
-        <Switch>
-
+        {/* <Switch> */}
+<Route path="/home"/> Introvert Oasis
           <Route exact path="/" component={ActivityReact}/>
-          {/* <Route exact path="/activites" component={} */}
+          <Route exact path="/activities/" component={UserReact}/>
           
-          {/* <Route exact path="/activities" component={IndividualReviewForm} /> */}
 
-        </Switch>
+        {/* </Switch> */}
       </Router>
     </div>
   )

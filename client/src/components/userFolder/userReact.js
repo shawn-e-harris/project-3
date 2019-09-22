@@ -1,64 +1,79 @@
-// import React from 'react'
-
-// const getActivitiesFromServer = () => 
-//     fetch('/activites') //activites is a path "prefix"
-//         .then(res => res.json())
-
-// const getSingleActivity = (id) =>
-//     fetch(`/activites/${id}`)
-
-// export default class App extends Component {
-//     state = {
-//         title: "placeholder title"
-//     }
-
-//     componentDidMount() {
-//         this.setActivitiesFromServer();
-//     }
-
-//     setActivitiesFromServer () {
-//         getActivitiesFromServer.then(allActivities => {
-            
-//         })
-//     }
-
-//     changeTheWorld = (newTitle) => {
-//         this.setState({title:newTitle})
-//     }
-//     render() {
-//         return (
-//             <div className="App">
-//                 Hellooooooo
-//                 <User />
-//                 {/* <User doWhatever={this.changeTheWorld.bind(this, "newWorld")} title={this.state.title}/> */}
-//             </div>
-//         )
-//     }
-// }
+import React, { Component } from 'react'
+import Axios from "axios"
+import IndividualUserForm from "../user"
 
 
-// userRouter.get("/users", function (req, res) {
-//   userApi.getAllUsers()
-//     .then((allUsers) => {
-//       // RENDER NOT CREATED YET
-//       // res.render("activitiesViewPath", {allActivities})
-//       res.json({ allUsers })
-//     })
-//     .catch((error) => {
-//       console.log(error) //will show error in console
-//     })
-// })
+export default class UserReact extends Component {
 
-// const getActivitiesFromServer = () =>
-// {    
-// fetch('/users')
-//       .then(res => 
-//         res.json()
-//       )
-//       .then (
-//       return
-//       )
-//       .catch((error) => {
-//         console.log(error)
-//       })
-// }
+    state = {
+        users: []
+    }
+
+    // GET ALL USERS FROM SERVER
+    getUsersFromServer = () => {
+        Axios.get("/users") //get prefix
+            .then(results => { //create promise
+                this.setState({ users: results.data.allUsers })
+                console.log(results)
+                // console.table(results.data.allUsers)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    // ADD USER TO SERVER
+    addUserToServer = (user) => {
+        Axios.post("/users", { user })
+            .then(results => {
+                this.setState({ results })
+                console.log(results)
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    // GET SINGLE USER FROM SERVER
+    getSingleUserFromServer = (usersId) => {
+        Axios.get(`/users/${usersId}`) //get prefix
+            .then(results => { //create promise
+                this.setState({ users: results.data })
+                console.log(results)
+                console.table(results.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    componentDidMount() {
+        this.getUsersFromServer();
+        // this.addUserToServer();
+        // this.getSingleUserFromServer();
+    }
+
+    render() {
+        return (
+            <div className="App">
+
+                <IndividualUserForm
+                    addNewIndividualUserText={this.addNewUser}
+                />
+                {this.state.users.map(user => {
+                    return (
+                        <ul>
+                            <li>
+                                {user.userName}
+                            </li>
+                            <li>
+                                {user.userLevel}
+                            </li>
+                        </ul>
+                    )
+                })}
+            </div>
+        )
+    }
+}
