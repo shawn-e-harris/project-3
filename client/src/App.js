@@ -23,6 +23,7 @@ export default function App() {
     <div>
       <Router>
         <Switch>
+
           <Route exact path="/" component={ActivityReact} />
 
         </Switch>

@@ -61,7 +61,7 @@ class AppActivity extends React.Component {
         activityList: {
             individualActivity: [""],
             energyLevel: [""],
-            hasEnteredActivityText: false
+            // hasEnteredActivityText: false
         }
     }
 
@@ -70,8 +70,8 @@ class AppActivity extends React.Component {
         let activityList = { ...this.state.activityList }
 
         activityList.individualActivity.push(newActivityText)
-        this.setState({individualActivity: individualActivity})
-        this.setState({hasEnteredActivityText: true})
+        // this.setState({individualActivity: individualActivity})
+        // this.setState({hasEnteredActivityText: true})
         this.setState({ activityList })
 
     }
@@ -84,9 +84,9 @@ class AppActivity extends React.Component {
                     addNewIndividualActivityText={this.addNewActivity}
                 />
                 {activityList(this.state.activityList)}
-                {this.state.hasEnteredActivityText ? <IndividualUserForm
+                {/* {this.state.hasEnteredActivityText ? <IndividualUserForm
                     addNewIndividualUserText={this.addNewUser}
-                /> : null }
+                /> : null } */}
             </div>
         );
     }

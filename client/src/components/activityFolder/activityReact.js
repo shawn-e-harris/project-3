@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from "axios"
+import IndividualActivityForm from "../activity"
 
 
 export default class ActivityReact extends Component {
@@ -20,6 +21,21 @@ export default class ActivityReact extends Component {
             })
     }
 
+    getSingleActivityFromServer = () => {
+        Axios.get("/activities/activitiesId") //get prefix
+            .then(results => { //create promise
+                // this.setState({ activities: results.data })
+                console.log(results)
+                // console.table(results.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    // componentDidMount() {
+    //     this.getSingleActivityFromServer();
+    // }
 
     componentDidMount() {
         this.getActivitiesFromServer();
@@ -38,6 +54,9 @@ export default class ActivityReact extends Component {
         return (
             <div className="App">
                 Hellooooooo
+                <IndividualActivityForm
+                    addNewIndividualActivityText={this.addNewActivity}
+                />
                 {this.state.activities.map(activity => {
                     return (
                         <div>
