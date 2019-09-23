@@ -73,7 +73,6 @@ export default class ActivityReact extends Component {
                             </li>
                             <li>
                                 {activity.activityLevel}
-                                {/* {activity.id} */}
                             </li>
                         </ul>
                         </div>

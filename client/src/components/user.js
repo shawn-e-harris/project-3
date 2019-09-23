@@ -33,17 +33,15 @@ class IndividualUserForm extends React.Component {
     }
 
     addUserToServer = (userName) => {
-        // console.log({ activity_id })
         console.log(this.props.activityId)
-        // console.log({ userName })
         console.log(userName)
-        
+
 
         Axios.post(`/activities/${this.props.activityId}/users`, userName)
             .then(res => {
                 // this.state({activity_id})
                 // this.state({user})
-                this.setState({ userName : res.data })
+                this.setState({ userName: res.data })
                 console.log(userName)
             })
             .catch(error => {
@@ -55,6 +53,7 @@ class IndividualUserForm extends React.Component {
         return (
             <form onSubmit={this.handleFormSubmission}>
                 <input
+                    required
                     type="text"
                     placeholder="New User"
                     value={this.state.userName}

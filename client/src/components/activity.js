@@ -46,10 +46,10 @@ class IndividualActivityForm extends Component {
     }
 
     addActivityToServer = (activity) => {
-        console.log({activity})
+        console.log({ activity })
         console.log(activity)
 
-        Axios.post("/activities",  activity )
+        Axios.post("/activities", activity)
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -64,6 +64,7 @@ class IndividualActivityForm extends Component {
         return (
             <form onSubmit={this.handleFormSubmission}>
                 <input
+                    required
                     type="text"
                     placeholder="New Activity"
                     value={this.state.activityName}
@@ -77,7 +78,7 @@ class IndividualActivityForm extends Component {
                     checked={this.state.activityLevel === "Low"}
                     onChange={this.handleRadioChange}
                 />
-        
+
                 <label>Low</label>
                 <input
                     type="radio"
@@ -98,7 +99,6 @@ class IndividualActivityForm extends Component {
                 <br></br>
                 <input type="submit" value="Add Activity" onClick={() => { this.addActivityToServer(this.state) }} />
 
-                {/* <Button className={styling.button}/> */}
             </form>
         )
     }

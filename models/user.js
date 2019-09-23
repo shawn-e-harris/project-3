@@ -13,10 +13,10 @@ const userCollection = mongoose.model('User', UserSchema)
 // FUNCTIONS
 
 // GET/ read
-const getAllUsers = (activity_id) => {
+const getAllUsers = () => {
   // activity_id = this.props.activityId
-  console.log(activity_id)
-  return userCollection.find({_id: activity_id});
+  // console.log(activity_id)
+  return userCollection.find();
 }
 
 // GET/ read

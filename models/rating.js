@@ -5,7 +5,7 @@ const mongoose = require('./connection.js')
 // CREATE SCHEMEA
 const RatingSchema = new mongoose.Schema({
   rating: Number,
-  userId: mongoose.Types.ObjectId
+  user_id: String
 })
 
 // CREATE COLLECTION API
@@ -14,8 +14,8 @@ const ratingCollection = mongoose.model('Rating', RatingSchema)
 // FUNCTIONS
 
 // GET/ read
-const getAllRatings = () => {
-  return ratingCollection.find();
+const getAllRatings = (user_id) => {
+  return ratingCollection.find({_id: user_id});
 }
 
 // GET/ read

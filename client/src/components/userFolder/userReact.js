@@ -14,7 +14,7 @@ export default class UserReact extends Component {
     getUsersFromServer = (activity_id) => {
         Axios.get(`/activities/${activity_id}/users`) //get prefix
             .then(results => { //create promise
-                this.setState({ results })
+                this.setState({users: results.data.allUsers})
                 console.log(results.data.allUsers)
                 // console.table(results.data.allUsers)
             })
@@ -23,36 +23,8 @@ export default class UserReact extends Component {
             })
     }
 
-    // // ADD USER TO SERVER
-    // addUserToServer = (activity_id, user) => {
-    //     Axios.post(`/activities/${activity_id}/users`, { user })
-    //         .then(results => {
-    //             this.setState({ results })
-    //             console.log(results)
-
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // }
-
-    // GET SINGLE USER FROM SERVER
-    getSingleUserFromServer = (activity_id, user_id) => {
-        Axios.get(`/activities/${activity_id}/users/${user_id}`) //get prefix
-            .then(results => { //create promise
-                this.setState({ users: results.data })
-                console.log(results)
-                console.table(results.data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
-
     componentDidMount() {
         this.getUsersFromServer(this.props.match.params.activity_id);
-        // this.addUserToServer();
-        // this.getSingleUserFromServer();
     }
 
     render() {
