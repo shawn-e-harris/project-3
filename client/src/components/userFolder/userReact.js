@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Axios from "axios"
 import IndividualUserForm from "../user"
 
@@ -10,11 +11,11 @@ export default class UserReact extends Component {
     }
 
     // GET ALL USERS FROM SERVER
-    getUsersFromServer = () => {
-        Axios.get("/users") //get prefix
+    getUsersFromServer = (activity_id) => {
+        Axios.get("/activities/${activity_id}/users") //get prefix
             .then(results => { //create promise
                 this.setState({ users: results.data.allUsers })
-                console.log(results)
+                console.log(results.data.allUsers)
                 // console.table(results.data.allUsers)
             })
             .catch(error => {
@@ -23,8 +24,8 @@ export default class UserReact extends Component {
     }
 
     // ADD USER TO SERVER
-    addUserToServer = (user) => {
-        Axios.post("/users", { user })
+    addUserToServer = (activity_id, user) => {
+        Axios.post("/activities/${activity_id}/users", { user })
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -36,8 +37,8 @@ export default class UserReact extends Component {
     }
 
     // GET SINGLE USER FROM SERVER
-    getSingleUserFromServer = (usersId) => {
-        Axios.get(`/users/${usersId}`) //get prefix
+    getSingleUserFromServer = (activity_id, user_id) => {
+        Axios.get(`/activities/${activity_id}/users/${user_id}`) //get prefix
             .then(results => { //create promise
                 this.setState({ users: results.data })
                 console.log(results)
@@ -65,10 +66,7 @@ export default class UserReact extends Component {
                     return (
                         <ul>
                             <li>
-                                {user.userName}
-                            </li>
-                            <li>
-                                {user.userLevel}
+                            <Link to="/activities/${activity_id}/users/${user_id}">{user.userName}</Link>
                             </li>
                         </ul>
                     )
