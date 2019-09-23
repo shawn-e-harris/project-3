@@ -4,7 +4,7 @@ import Axios from "axios"
 
 const individualUser = (text) => {
     return (
-            <p>{text}</p>
+        <p>{text}</p>
     )
 }
 
@@ -21,6 +21,7 @@ class IndividualUserForm extends React.Component {
 
     state = {
         userName: "",
+        activity_id: ""
     }
 
     handleInputChange = (event) => {
@@ -29,15 +30,14 @@ class IndividualUserForm extends React.Component {
 
     handleFormSubmission = (event) => {
         event.preventDefault();
-
         this.props.addNewIndividualUserText(this.state.userName)
     }
 
-    addUserToServer = (user) => {
-        console.log({user})
+    addUserToServer = (activity_id, user) => {
+        console.log({ user })
         console.log(user)
 
-        Axios.post("/users",  user )
+        Axios.post(`/activities/${activity_id}/users`, user)
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -57,7 +57,7 @@ class IndividualUserForm extends React.Component {
                     value={this.state.userName}
                     onChange={this.handleInputChange}
                 />
-                <input type="submit" value="Add User" onClick={() => { this.addUserToServer(this.state) }}/>
+                <input type="submit" value="Add User" onClick={() => { this.addUserToServer(this.state) }} />
             </form>
         )
     }

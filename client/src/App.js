@@ -24,7 +24,7 @@ export default function App() {
 }/>
           <Route exact path="/activities" component={ActivityReact}/>
           {/* <Route exact path="/activities" rende={ActivityReact}/> */}
-          <Route exact path="/activities/${activity_id}/users" component={UserReact}/>
+          <Route exact path="/activities/:activity_id/users" component={UserReact}/>
           
 
         {/* </Switch> */}

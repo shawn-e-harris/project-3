@@ -85,6 +85,7 @@ class IndividualActivityForm extends Component {
                     checked={this.state.activityLevel === "Low"}
                     onChange={this.handleRadioChange}
                 />
+        
                 <label>Low</label>
                 <input
                     type="radio"

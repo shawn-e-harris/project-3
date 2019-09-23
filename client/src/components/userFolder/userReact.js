@@ -12,9 +12,9 @@ export default class UserReact extends Component {
 
     // GET ALL USERS FROM SERVER
     getUsersFromServer = (activity_id) => {
-        Axios.get("/activities/${activity_id}/users") //get prefix
+        Axios.get(`/activities/${activity_id}/users`) //get prefix
             .then(results => { //create promise
-                this.setState({ users: results.data.allUsers })
+                this.setState({ results })
                 console.log(results.data.allUsers)
                 // console.table(results.data.allUsers)
             })
@@ -25,7 +25,7 @@ export default class UserReact extends Component {
 
     // ADD USER TO SERVER
     addUserToServer = (activity_id, user) => {
-        Axios.post("/activities/${activity_id}/users", { user })
+        Axios.post(`/activities/${activity_id}/users`, { user })
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -64,11 +64,14 @@ export default class UserReact extends Component {
                 />
                 {this.state.users.map(user => {
                     return (
-                        <ul>
-                            <li>
-                            <Link to="/activities/${activity_id}/users/${user_id}">{user.userName}</Link>
-                            </li>
-                        </ul>
+                        <div>
+                            <ul>
+                                <li>
+                                    {/* <Link to="/activities/${activity_id}/users/${user_id}">{user.userName}</Link> */}
+                                    {user.userName}
+                                </li>
+                            </ul>
+                        </div>
                     )
                 })}
             </div>

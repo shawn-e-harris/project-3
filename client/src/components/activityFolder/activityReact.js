@@ -66,14 +66,17 @@ export default class ActivityReact extends Component {
                 />
                 {this.state.activities.map(activity => {
                     return (
+                        <div>
                         <ul>
                             <li>
-                            <Link to="/activities/${activity_id}/users">{activity.activityName}</Link>
+                            <Link to={`/activities/${activity._id}/users`}>{activity.activityName}</Link>
                             </li>
                             <li>
                                 {activity.activityLevel}
+                                {activity.id}
                             </li>
                         </ul>
+                        </div>
                     )
                 })}
             </div>

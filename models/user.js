@@ -4,7 +4,7 @@ const mongoose = require('./connection.js')
 // CREATE SCHEMEA
 const UserSchema = new mongoose.Schema({
   userName: String,
-  activitiesId: mongoose.Types.ObjectId
+  activity_id: mongoose.Types.ObjectId
 })
 
 // CREATE COLLECTION API
@@ -14,28 +14,28 @@ const userCollection = mongoose.model('User', UserSchema)
 
 // GET/ read
 const getAllUsers = () => {
-  return userCollection.find({_id: activitiesId});
+  return userCollection.find({_id: activity_id});
 }
 
 // GET/ read
-const getOneUser = (userId) => {
-  return userCollection.findById(userId)
+const getOneUser = (user_id) => {
+  return userCollection.findById(user_id)
 }
 
 // CREATE/ post
-const addUser = (newUser, activitiesId) => {
-  newUser.activitiesId = activitiesId
-  return userCollection.create(newUser)
+const addUser = (userName, activity_id) => {
+  userName.activity_id = activity_id
+  return userCollection.create(userName)
 }
 
 // UPDATE/ edit
-const updateUser = (userId, updatedUser) => {
-  return userCollection.updateOne({_id: userId}, updatedUser)
+const updateUser = (user_id, updatedUser) => {
+  return userCollection.updateOne({_id: user_id}, updatedUser)
 }
 
 // DELETE
-const deleteUser = (userId) => {
-  return userCollection.findByIdAndDelete(userId)
+const deleteUser = (user_id) => {
+  return userCollection.findByIdAndDelete(user_id)
 }
 
 // EXPORT ALL FUNCTIONS
