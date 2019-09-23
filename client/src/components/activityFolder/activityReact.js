@@ -13,7 +13,7 @@ export default class ActivityReact extends Component {
 
     // GET ALL ACTIVITIES FROM SERVER
     getActivitiesFromServer = () => {
-        Axios.get("/activities") //get prefix
+        Axios.get(`/activities`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data.allActivities })
                 console.log(results)
@@ -26,7 +26,7 @@ export default class ActivityReact extends Component {
 
     // ADD ACTIVITY TO SERVER
     addActivityToServer = (activity) => {
-        Axios.post("/activities", { activity })
+        Axios.post(`/activities`, { activity })
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -73,7 +73,7 @@ export default class ActivityReact extends Component {
                             </li>
                             <li>
                                 {activity.activityLevel}
-                                {activity.id}
+                                {/* {activity.id} */}
                             </li>
                         </ul>
                         </div>

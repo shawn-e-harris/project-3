@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import Button from '@material-ui/core/Button';
-// import { red } from '@material-ui/core/colors';
 // import IndividualUserForm from "./user"
 import Axios from "axios"
 
@@ -15,10 +13,6 @@ const energyLevel = (text) => {
         <p>{text}</p>
     )
 }
-
-// const styling = {
-//     button: {backgroundColor: "red"},
-// }
 
 const activityList = (showActivity, activityIndex) => {
 
@@ -39,12 +33,10 @@ class IndividualActivityForm extends Component {
 
     handleInputChange = (event) => {
         this.setState({ activityName: event.target.value })
-
     }
 
     handleRadioChange = (event) => {
         this.setState({ activityLevel: event.target.value })
-
     }
 
     handleFormSubmission = (event) => {

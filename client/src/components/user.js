@@ -21,7 +21,6 @@ class IndividualUserForm extends React.Component {
 
     state = {
         userName: "",
-        activity_id: ""
     }
 
     handleInputChange = (event) => {
@@ -33,15 +32,19 @@ class IndividualUserForm extends React.Component {
         this.props.addNewIndividualUserText(this.state.userName)
     }
 
-    addUserToServer = (activity_id, user) => {
-        console.log({ user })
-        console.log(user)
+    addUserToServer = (activity_id, userName) => {
+        // console.log({ activity_id })
+        console.log(activity_id)
+        // console.log({ userName })
+        console.log(userName)
+        
 
-        Axios.post(`/activities/${activity_id}/users`, user)
-            .then(results => {
-                this.setState({ results })
-                console.log(results)
-
+        Axios.post(`/activities/${activity_id}/users`, )
+            .then(res => {
+                // this.state({activity_id})
+                // this.state({user})
+                this.setState({ userName : res.data })
+                console.log(userName)
             })
             .catch(error => {
                 console.log(error)
@@ -67,8 +70,8 @@ class AppUser extends React.Component {
 
     state = {
         userList: {
-            individualUser: [""],
-            hasEnteredUserText: false
+            individualUser: [""]
+            // hasEnteredUserText: false
         }
     }
 

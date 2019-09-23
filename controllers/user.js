@@ -13,7 +13,7 @@ const userRouter = express.Router({
 // REQ HANDLERS ****************
 
 // GET ALL USERS
-userRouter.get("/users", function (req, res) {
+userRouter.get("/activities/:activitiesId/users", function (req, res) {
   userApi.getAllUsers()
     .then((allUsers) => {
       // RENDER NOT CREATED YET
@@ -26,7 +26,7 @@ userRouter.get("/users", function (req, res) {
 })
 
 // CREATE NEW USERS
-userRouter.post("/users", function (req, res) {
+userRouter.post("/activities/:activitiesId/users", function (req, res) {
   userApi.addUser(req.body)
     .then((users) => {
       // res.redirect("/users")
@@ -38,8 +38,8 @@ userRouter.post("/users", function (req, res) {
 })
 
 // CREATE USERS PATH
-userRouter.get("/users/new", function (req, res) {
-  userApi.addUser(req.params.usersId)
+userRouter.get("/activities/:activitiesId/users/new", function (req, res) {
+  userApi.addUser(req.params.activitiesId)
     .then((getUsers) => {
       // res.send({ getUsers })
       res.json({ getUsers })
@@ -50,7 +50,7 @@ userRouter.get("/users/new", function (req, res) {
 })
 
 // RENDER CREATEFORM
-userRouter.get("/users/add", function (req, res) {
+userRouter.get("/activities/:activitiesId/users/add", function (req, res) {
   // RENDER NOT CREATED YET
   // res.render("usersViewPath", {
   // })
@@ -58,7 +58,7 @@ userRouter.get("/users/add", function (req, res) {
 })
 
 // GET ONE USER BY userId
-userRouter.get("/users/:usersId", function (req, res) {
+userRouter.get("/activities/:activitiesId/users/:usersId", function (req, res) {
   userApi.getOneUser(req.params.usersId)
     .then((usersFromDb) => {
       // RENDER NOT CREATED YET
@@ -71,7 +71,7 @@ userRouter.get("/users/:usersId", function (req, res) {
 })
 
 // EDIT USER
-userRouter.put("/users/:usersId", function (req, res) {
+userRouter.put("/activities/:activitiesId/users/:usersId", function (req, res) {
   userApi.updateUser(req.params.usersId, req.body)
     .then((users) => {
       // res.redirect("/users")
@@ -83,7 +83,7 @@ userRouter.put("/users/:usersId", function (req, res) {
 })
 
 // DELETE USER
-userRouter.delete("/users/:usersId", function (req, res) {
+userRouter.delete("/activities/:activitiesId/users/:usersId", function (req, res) {
   userApi.deleteUser(req.params.usersId)
     .then((users) => {
       // res.redirect("/users") //redirects to "/", can use any url, etc.

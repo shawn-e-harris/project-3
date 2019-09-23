@@ -1,10 +1,18 @@
 // IMPORT MONGOOSE
 const mongoose = require('./connection.js')
+// const UserSchema = require("./user")
 
 // CREATE SCHEMEA
 const ActivitySchema = new mongoose.Schema({
   activityName: String,
   activityLevel: String,
+  // users_id: mongoose.Types.ObjectId,
+  // userInfo: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "UserSchema"
+  //   }
+  // ]
 })
 
 // CREATE COLLECTION API
@@ -29,7 +37,7 @@ const addActivity = (newActivity) => {
 
 // UPDATE/ edit
 const updateActivity = (activityId, updatedActivity) => {
-  return activityCollection.updateOne({_id: activityId}, updatedActivity)
+  return activityCollection.updateOne({ _id: activityId }, updatedActivity)
 }
 
 // DELETE
