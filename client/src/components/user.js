@@ -32,14 +32,14 @@ class IndividualUserForm extends React.Component {
         this.props.addNewIndividualUserText(this.state.userName)
     }
 
-    addUserToServer = (activity_id, userName) => {
+    addUserToServer = (userName) => {
         // console.log({ activity_id })
-        console.log(activity_id)
+        console.log(this.props.activityId)
         // console.log({ userName })
         console.log(userName)
         
 
-        Axios.post(`/activities/${activity_id}/users`, )
+        Axios.post(`/activities/${this.props.activityId}/users`, userName)
             .then(res => {
                 // this.state({activity_id})
                 // this.state({user})
@@ -90,6 +90,7 @@ class AppUser extends React.Component {
             <div>
                 <h1>User</h1>
                 <IndividualUserForm
+                    activityId={this.props.activityId}
                     addNewIndividualUserText={this.addNewUser}
                 />
                 {userList(this.state.userList)}

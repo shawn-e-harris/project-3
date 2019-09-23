@@ -27,7 +27,9 @@ userRouter.get("/activities/:activitiesId/users", function (req, res) {
 
 // CREATE NEW USERS
 userRouter.post("/activities/:activitiesId/users", function (req, res) {
-  userApi.addUser(req.body)
+  const newUser = req.body
+  newUser.activity_id = req.params.activitiesId
+  userApi.addUser(newUser)
     .then((users) => {
       // res.redirect("/users")
       res.json(users)

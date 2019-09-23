@@ -23,18 +23,18 @@ export default class UserReact extends Component {
             })
     }
 
-    // ADD USER TO SERVER
-    addUserToServer = (activity_id, user) => {
-        Axios.post(`/activities/${activity_id}/users`, { user })
-            .then(results => {
-                this.setState({ results })
-                console.log(results)
+    // // ADD USER TO SERVER
+    // addUserToServer = (activity_id, user) => {
+    //     Axios.post(`/activities/${activity_id}/users`, { user })
+    //         .then(results => {
+    //             this.setState({ results })
+    //             console.log(results)
 
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }
 
     // GET SINGLE USER FROM SERVER
     getSingleUserFromServer = (activity_id, user_id) => {
@@ -50,7 +50,7 @@ export default class UserReact extends Component {
     }
 
     componentDidMount() {
-        this.getUsersFromServer();
+        this.getUsersFromServer(this.props.match.params.activity_id);
         // this.addUserToServer();
         // this.getSingleUserFromServer();
     }
@@ -60,6 +60,7 @@ export default class UserReact extends Component {
             <div className="App">
 
                 <IndividualUserForm
+                    activityId={this.props.match.params.activity_id}
                     addNewIndividualUserText={this.addNewUser}
                 />
                 {this.state.users.map(user => {

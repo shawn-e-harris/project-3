@@ -4,6 +4,7 @@ const mongoose = require('./connection.js')
 // CREATE SCHEMEA
 const UserSchema = new mongoose.Schema({
   userName: String,
+  activity_id: String
 })
 
 // CREATE COLLECTION API
@@ -12,8 +13,9 @@ const userCollection = mongoose.model('User', UserSchema)
 // FUNCTIONS
 
 // GET/ read
-const getAllUsers = (userName, activity_id) => {
-  userName.activity_id = activity_id
+const getAllUsers = (activity_id) => {
+  // activity_id = this.props.activityId
+  console.log(activity_id)
   return userCollection.find({_id: activity_id});
 }
 
@@ -23,8 +25,8 @@ const getOneUser = (user_id) => {
 }
 
 // CREATE/ post
-const addUser = (userName, activity_id) => {
-  userName.activity_id = activity_id
+const addUser = (userName) => {
+  // activity_id = this.props.activityId
   return userCollection.create(userName)
 }
 
