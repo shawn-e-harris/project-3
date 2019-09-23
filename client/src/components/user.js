@@ -2,9 +2,9 @@ import React from 'react';
 import IndividualRatingForm from "./rating";
 import Axios from "axios"
 
-const individualUser = (text) => {
+const individualUser = (user) => {
     return (
-        <p>{text}</p>
+        <p>{user.userName}</p>
     )
 }
 
@@ -48,13 +48,13 @@ class IndividualUserForm extends React.Component {
     }
 }
 
-export default (usersList, addNewUser) => (
+export default (users, addNewUser) => (
     <div>
         <h1>User</h1>
         <IndividualUserForm
             addNewUser={addNewUser}
         />
-        {userList(this.state.userList)}
+        {userList(users)}
         {/* {this.state.hasEnteredUserText ? <IndividualRatingForm
                     addNewIndividualRatingNumber={this.addNewRating}
                 /> : null } */}

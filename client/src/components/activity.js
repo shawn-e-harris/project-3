@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Users from './components/user'
+import Users from './user'
 
-const addUserToActivity = (updateActivity) => (newUser) => {
+const addUserToActivity = (updateActivity) => (activity) => (newUser) => {
     const newActivity = {...activity};
 
     if(!newActivity.users < newActivity.users.length < 1)
@@ -16,7 +16,7 @@ const individualActivity = (addNewUser) => (activity) => {
     return (
         <div>
             <p>{activity.activityName} - {activity.activityLevel}</p>
-            {Users(activity.users, addNewUser)}
+            {Users(activity.users, addNewUser(activity))}
         </div>
     )
 }

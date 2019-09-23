@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Activities from './components/activity'
-
+import Axios from 'axios'
 
 import './App.css';
 
@@ -29,7 +29,7 @@ const getUsersFromServer = (activity_id) => {
     })
 }
 
-addUserToServer = (userName) => {
+const addUserToServer = (userName) => {
   // console.log({ activity_id })
   console.log(this.props.activityId)
   // console.log({ userName })
@@ -39,7 +39,11 @@ addUserToServer = (userName) => {
 export default class App extends React.Component {
 
   state = {
-    activities: []
+    activities: [{
+      activityName: "tom",
+      activityLevel: "Foo",
+      users: [{ userName: "jerry" }]
+    }]
   }
 
   addNewUser = (userName) => {
@@ -64,33 +68,34 @@ export default class App extends React.Component {
   }
 
   updateActivity = (activity) => {
-    
+    console.log('new activity:', activity)
+
   }
 
-  renderActivities = () => Activities(this.state.activities, this.addNewActivity)
-  renderUser = () => User()
+  renderActivities = () => Activities(this.state.activities, this.addNewActivity, this.updateActivity)
 
   render() {
     return (
       <div>
-        <Router>
+        {this.renderActivities()}
+        {/* <Router> */}
           {/* <Switch> */}
 
-          <Link to="/">Home</Link>
+          {/* <Link to="/">Home</Link>
           <Link to="/activities">Activity</Link>
-          <Link to="/activities/users">User</Link>
-          <Route exact path="/" render={
+          <Link to="/activities/users">User</Link> */}
+          {/* <Route exact path="/" render={
             () => {
               return (<h1>Lone Wolf</h1>);
             }
-          } />
-          <Route exact path="/activities" render={this.renderActivities} />
+          } /> */}
+          {/* <Route exact path="/activities" render={this.renderActivities} /> */}
           {/* <Route exact path="/activities" rende={ActivityReact}/> */}
-          <Route exact path="/activities/:activity_id/users" component={UserReact} />
+          {/* <Route exact path="/activities/:activity_id/users" component={UserReact} /> */}
 
 
           {/* </Switch> */}
-        </Router>
+        {/* </Router> */}
       </div>
     )
   }
