@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
-// import IndividualUserForm from "./user"
-import Axios from "axios"
+import Users from './components/user'
 
-const individualActivity = (text) => {
+const addUserToActivity = (updateActivity) => (newUser) => {
+    const newActivity = {...activity};
+
+    if(!newActivity.users < newActivity.users.length < 1)
+        newActivity.users = [newUser];
+    else
+        newActivity.users.push(newUser);
+
+    updateActivity(newActivity)
+}
+
+const individualActivity = (addNewUser) => (activity) => {
     return (
-        <p>{text}</p>
+        <div>
+            <p>{activity.activityName} - {activity.activityLevel}</p>
+            {Users(activity.users, addNewUser)}
+        </div>
     )
 }
 
-const energyLevel = (text) => {
-    return (
-        <p>{text}</p>
-    )
-}
-
-const activityList = (showActivity, activityIndex) => {
+const activityList = (activities, updateActivity) => {
 
     return (
         <div>
-            {showActivity.individualActivity.map(individualActivity)}
-            {showActivity.energyLevel.map(energyLevel)}
+            {activities.map(individualActivity(addUserToActivity(updateActivity)))}
         </div>
     )
 }
@@ -41,23 +47,7 @@ class IndividualActivityForm extends Component {
 
     handleFormSubmission = (event) => {
         event.preventDefault();
-        this.props.addNewIndividualActivityText(this.state.activityName)
-        this.props.addNewIndividualEnergyLevel(this.state.activityLevel)
-    }
-
-    addActivityToServer = (activity) => {
-        console.log({activity})
-        console.log(activity)
-
-        Axios.post("/activities",  activity )
-            .then(results => {
-                this.setState({ results })
-                console.log(results)
-
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        this.props.addNewActivity(this.state)
     }
 
     render() {
@@ -77,7 +67,7 @@ class IndividualActivityForm extends Component {
                     checked={this.state.activityLevel === "Low"}
                     onChange={this.handleRadioChange}
                 />
-        
+
                 <label>Low</label>
                 <input
                     type="radio"
@@ -96,7 +86,7 @@ class IndividualActivityForm extends Component {
                 />
                 <label>High</label>
                 <br></br>
-                <input type="submit" value="Add Activity" onClick={() => { this.addActivityToServer(this.state) }} />
+                <input type="submit" value="Add Activity" />
 
                 {/* <Button className={styling.button}/> */}
             </form>
@@ -104,54 +94,15 @@ class IndividualActivityForm extends Component {
     }
 }
 
-class AppActivity extends React.Component {
-
-    state = {
-        activityList: {
-            individualActivity: [""],
-            energyLevel: [""],
-            // hasEnteredActivityText: false
-        }
-    }
-
-    addNewActivity = (activityName) => {
-
-        let activityList = { ...this.state.activityList }
-
-        activityList.individualActivity.push(activityName)
-        // this.setState({individualActivity: individualActivity})
-        // this.setState({hasEnteredActivityText: true})
-        this.setState({ activityList })
-
-    }
-
-    addActivityLevel = (activityLevel) => {
-
-        let activityList = { ...this.state.activityList }
-
-        activityList.energyLevel.push(activityLevel)
-        // this.setState({individualActivity: individualActivity})
-        // this.setState({hasEnteredActivityText: true})
-        this.setState({ activityList })
-
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Activity</h1>
-                <IndividualActivityForm
-                    addNewIndividualActivityText={this.addNewActivity}
-                    addNewIndividualEnergyLevel={this.addActivityLevel}
-
-                />
-                {activityList(this.state.activityList)}
-                {/* {this.state.hasEnteredActivityText ? <IndividualUserForm
+export default (activities, addNewActivity, updateActivity) => (
+    <div>
+        <h1>Activity</h1>
+        <IndividualActivityForm
+            addNewActivity={addNewActivity}
+        />
+        {activityList(activities, updateActivity)}
+        {/* {this.state.hasEnteredActivityText ? <IndividualUserForm
                     addNewIndividualUserText={this.addNewUser}
                 /> : null } */}
-            </div>
-        );
-    }
-}
-
-export default AppActivity;
+    </div>
+);

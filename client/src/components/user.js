@@ -8,14 +8,15 @@ const individualUser = (text) => {
     )
 }
 
-const userList = (showUser, userIndex) => {
+const userList = (users, userIndex) => {
 
     return (
         <div>
-            {showUser.individualUser.map(individualUser)}
+            {users.map(individualUser)}
         </div>
     )
 }
+
 
 class IndividualUserForm extends React.Component {
 
@@ -29,26 +30,7 @@ class IndividualUserForm extends React.Component {
 
     handleFormSubmission = (event) => {
         event.preventDefault();
-        this.props.addNewIndividualUserText(this.state.userName)
-    }
-
-    addUserToServer = (userName) => {
-        // console.log({ activity_id })
-        console.log(this.props.activityId)
-        // console.log({ userName })
-        console.log(userName)
-        
-
-        Axios.post(`/activities/${this.props.activityId}/users`, userName)
-            .then(res => {
-                // this.state({activity_id})
-                // this.state({user})
-                this.setState({ userName : res.data })
-                console.log(userName)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        this.props.addNewUser(this.state)
     }
 
     render() {
@@ -60,46 +42,21 @@ class IndividualUserForm extends React.Component {
                     value={this.state.userName}
                     onChange={this.handleInputChange}
                 />
-                <input type="submit" value="Add User" onClick={() => { this.addUserToServer(this.state) }} />
+                <input type="submit" value="Add User" />
             </form>
         )
     }
 }
 
-class AppUser extends React.Component {
-
-    state = {
-        userList: {
-            individualUser: [""]
-            // hasEnteredUserText: false
-        }
-    }
-
-    addNewUser = (userName) => {
-
-        let userList = { ...this.state.userList }
-
-        userList.individualUser.push(userName)
-        // this.setState({individualUser: individualUser})
-        // this.setState({hasEnteredUserText: true})
-        this.setState({ userList })
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>User</h1>
-                <IndividualUserForm
-                    activityId={this.props.activityId}
-                    addNewIndividualUserText={this.addNewUser}
-                />
-                {userList(this.state.userList)}
-                {/* {this.state.hasEnteredUserText ? <IndividualRatingForm
+export default (usersList, addNewUser) => (
+    <div>
+        <h1>User</h1>
+        <IndividualUserForm
+            addNewUser={addNewUser}
+        />
+        {userList(this.state.userList)}
+        {/* {this.state.hasEnteredUserText ? <IndividualRatingForm
                     addNewIndividualRatingNumber={this.addNewRating}
                 /> : null } */}
-            </div>
-        );
-    }
-}
-
-export default AppUser;
+    </div>
+);
