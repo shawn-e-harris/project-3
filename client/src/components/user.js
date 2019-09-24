@@ -50,10 +50,12 @@ class IndividualUserForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleFormSubmission}>
-                <input
+                <textarea
+                    rows="4"
+                    cols="50"
                     required
                     type="text"
-                    placeholder="New User"
+                    placeholder="How do you feel about the activities listed?"
                     value={this.state.userName}
                     onChange={this.handleInputChange}
                 />
@@ -68,7 +70,7 @@ class AppUser extends React.Component {
     state = {
         userList: {
             individualUser: [""],
-            hasEnteredUserText: false
+            // hasEnteredUserText: false
         }
     }
 
@@ -77,24 +79,24 @@ class AppUser extends React.Component {
         let userList = { ...this.state.userList }
 
         userList.individualUser.push(userName)
-        this.setState({individualUser: individualUser})
-        this.setState({hasEnteredUserText: true})
+        // this.setState({individualUser: individualUser})
+        // this.setState({hasEnteredUserText: true})
         this.setState({ userList })
     }
 
     render() {
         return (
             <div>
-                <h1>User</h1>
+                <h1>Reviews</h1>
                 <IndividualUserForm
                     activityId={this.props.activityId}
                     addNewIndividualUserText={this.addNewUser}
                 />
                 {userList(this.state.userList)}
-                {this.state.hasEnteredUserText ? <IndividualRatingForm
+                {/* {this.state.hasEnteredUserText ? <IndividualRatingForm
                     addNewIndividualRatingNumber={this.addNewRating}
-                /> : null }
-                
+                /> : null } */}
+
             </div>
         );
     }
