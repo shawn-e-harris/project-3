@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from "axios"
 
 const individualReview = (text) => {
     return (
@@ -31,6 +32,21 @@ class IndividualReviewForm extends Component {
         this.props.addNewIndividualReviewText(this.state.newReviewText)
     }
 
+    addReviewToServer = (newReviewText) => {
+        console.log({ newReviewText })
+        console.log(newReviewText)
+
+        Axios.post("/reviews", newReviewText)
+            .then(results => {
+                this.setState({ newReviewText: results.data.allReviews })
+                console.log(newReviewText)
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     render() {
         return (
             <form onSubmit={this.handleFormSubmission}>
@@ -42,7 +58,7 @@ class IndividualReviewForm extends Component {
                     value={this.state.newReviewText}
                     onChange={this.handleInputChange}
                 />
-                <input type="submit" value="Add Review" />
+                <input type="submit" value="Add Review" onClick={() => { this.addReviewToServer(this.state) }}/>
             </form>
         )
     }
@@ -57,19 +73,15 @@ class AppReview extends React.Component {
     }
 
     addNewReview = (newReviewText) => {
-
         let reviewList = { ...this.state.reviewList }
-
         reviewList.individualReview.push(newReviewText)
-
         this.setState({ reviewList })
-
     }
 
     render() {
         return (
             <div>
-                {/* <h1>My Review</h1> */}
+                <h1>My Review</h1>
                 <IndividualReviewForm
                     addNewIndividualReviewText={this.addNewReview}
                 />

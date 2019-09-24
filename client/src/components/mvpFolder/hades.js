@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import IndividualActivityForm from "./activity"
-import AppActivity from "./activity"
 import Axios from "axios"
 
-const individualActivity = (text) => {
+const individualHadesActivity = (text) => {
     return (
         <p>{text}</p>
     )
 }
 
-const energyLevel = (text) => {
+const hadesEnergyLevel = (text) => {
     return (
         <p>{text}</p>
     )
@@ -19,13 +17,13 @@ const activityList = (showActivity, activityIndex) => {
 
     return (
         <div>
-            {showActivity.individualActivity.map(individualActivity)}
-            {showActivity.energyLevel.map(energyLevel)}
+            {showActivity.individualHadesActivity.map(individualHadesActivity)}
+            {showActivity.hadesEnergyLevel.map(hadesEnergyLevel)}
         </div>
     )
 }
 
-class IndividualActivityForm extends Component {
+class IndividualHadesActivityForm extends Component {
 
     state = {
         activityName: "",
@@ -42,8 +40,8 @@ class IndividualActivityForm extends Component {
 
     handleFormSubmission = (event) => {
         event.preventDefault();
-        this.props.addNewIndividualActivityText(this.state.activityName)
-        this.props.addNewIndividualEnergyLevel(this.state.activityLevel)
+        this.props.addNewIndividualHadesActivityText(this.state.activityName)
+        this.props.addNewIndividualHadesEnergyLevel(this.state.activityLevel)
     }
 
     addActivityToServer = (activity) => {
@@ -74,7 +72,7 @@ class IndividualActivityForm extends Component {
                 <br></br>
                 <input
                     type="radio"
-                    name="energyLevel"
+                    name="hadesEnergyLevel"
                     value="Low"
                     checked={this.state.activityLevel === "Low"}
                     onChange={this.handleRadioChange}
@@ -83,7 +81,7 @@ class IndividualActivityForm extends Component {
                 <label>Low</label>
                 <input
                     type="radio"
-                    name="energyLevel"
+                    name="hadesEnergyLevel"
                     value="Medium"
                     checked={this.state.activityLevel === "Medium"}
                     onChange={this.handleRadioChange}
@@ -91,7 +89,7 @@ class IndividualActivityForm extends Component {
                 <label>Medium</label>
                 <input
                     type="radio"
-                    name="energyLevel"
+                    name="hadesEnergyLevel"
                     value="High"
                     checked={this.state.activityLevel === "High"}
                     onChange={this.handleRadioChange}
@@ -105,12 +103,12 @@ class IndividualActivityForm extends Component {
     }
 }
 
-class AppActivity extends React.Component {
+class AppHadesActivity extends React.Component {
 
     state = {
         activityList: {
-            individualActivity: [""],
-            energyLevel: [""],
+            individualHadesActivity: [""],
+            hadesEnergyLevel: [""],
             // hasEnteredActivityText: false
         }
     }
@@ -119,8 +117,8 @@ class AppActivity extends React.Component {
 
         let activityList = { ...this.state.activityList }
 
-        activityList.individualActivity.push(activityName)
-        // this.setState({individualActivity: individualActivity})
+        activityList.individualHadesActivity.push(activityName)
+        // this.setState({individualHadesActivity: individualHadesActivity})
         // this.setState({hasEnteredActivityText: true})
         this.setState({ activityList })
 
@@ -130,8 +128,8 @@ class AppActivity extends React.Component {
 
         let activityList = { ...this.state.activityList }
 
-        activityList.energyLevel.push(activityLevel)
-        // this.setState({individualActivity: individualActivity})
+        activityList.hadesEnergyLevel.push(activityLevel)
+        // this.setState({individualHadesActivity: individualHadesActivity})
         // this.setState({hasEnteredActivityText: true})
         this.setState({ activityList })
 
@@ -140,10 +138,10 @@ class AppActivity extends React.Component {
     render() {
         return (
             <div>
-                <h1>Activity</h1>
-                <IndividualActivityForm
-                    addNewIndividualActivityText={this.addNewActivity}
-                    addNewIndividualEnergyLevel={this.addActivityLevel}
+                <h1>Hades Activity</h1>
+                <IndividualHadesActivityForm
+                    addNewIndividualHadesActivityText={this.addNewActivity}
+                    addNewIndividualHadesEnergyLevel={this.addActivityLevel}
 
                 />
                 {activityList(this.state.activityList)}
@@ -155,4 +153,4 @@ class AppActivity extends React.Component {
     }
 }
 
-export default AppActivity;
+export default AppHadesActivity;

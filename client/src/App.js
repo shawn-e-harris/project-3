@@ -1,14 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-// import AppActivity from './components/activity.js'
-// import AppUser from './components/user.js'
-// import AppRating from './components/rating.js'
-import IndividualReviewForm from './components/review.js'
+import ReviewReact from "./components/reviewFolder/reviewReact"
 import ActivityReact from "./components/activityFolder/activityReact"
 import UserReact from "./components/userFolder/userReact"
-import Home from "./components/home"
 import Container from '@material-ui/core/Container';
-
 import './App.css';
 
 export default function App() {
@@ -34,17 +29,14 @@ export default function App() {
                         <Link to="/hades">Hades</Link>
                     </h1>
                 </Container>
-                
-                {Home}
               </div>
             );
           }
         } />
-        {/* <Route exact path="/activities" component={ActivityReact} />
-        <Route exact path="/activities/:activity_id/users" component={UserReact} /> */}
-
-
-        {/* </Switch> */}
+        <Route exact path="/reviews" component={ReviewReact} />
+        <Route exact path="/activities" component={ActivityReact} />
+        <Route exact path="/activities/:activity_id/users" component={UserReact} />
+{/* </Switch> */}
       </Router>
     </div>
   )

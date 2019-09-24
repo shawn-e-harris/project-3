@@ -45,14 +45,14 @@ class IndividualActivityForm extends Component {
         this.props.addNewIndividualEnergyLevel(this.state.activityLevel)
     }
 
-    addActivityToServer = (activity) => {
-        console.log({ activity })
-        console.log(activity)
+    addActivityToServer = (activityName) => {
+        console.log({ activityName })
+        console.log(activityName)
 
-        Axios.post("/hades", activity)
+        Axios.post("/activities", activityName)
             .then(results => {
-                this.setState({ results })
-                console.log(results)
+                this.setState({ activityName: results.data.allActivities })
+                console.log(activityName)
 
             })
             .catch(error => {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Axios from "axios"
-import IndividualActivityForm from "../activity"
+import IndividualZeusActivityForm from "./zeus"
 
-export default class ActivityReact extends Component {
+export default class ZeusActivityReact extends Component {
 
     state = {
         activities: []
@@ -11,7 +11,7 @@ export default class ActivityReact extends Component {
 
     // GET ALL ACTIVITIES FROM SERVER
     getActivitiesFromServer = () => {
-        Axios.get(`/activities`) //get prefix
+        Axios.get(`/zeus`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data.allActivities })
                 console.log(results)
@@ -22,16 +22,43 @@ export default class ActivityReact extends Component {
             })
     }
 
+    // ADD ACTIVITY TO SERVER
+    addActivityToServer = (activity) => {
+        Axios.post(`/zeus`, { activity })
+            .then(results => {
+                this.setState({ results })
+                console.log(results)
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    // GET SINGLE ACTIVITY FROM SERVER
+    getSingleActivityFromServer = (activity_id) => {
+        Axios.get(`/zeus/${activity_id}`) //get prefix
+            .then(results => { //create promise
+                this.setState({ activities: results.data })
+                console.log(results)
+                console.table(results.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     componentDidMount() {
         this.getActivitiesFromServer();
+        // this.addActivityToServer();
+        // this.getSingleActivityFromServer();
     }
 
     render() {
         return (
             <div className="App">
 
-                <IndividualActivityForm
+                <IndividualZeusActivityForm
                 
                     addNewIndividualActivityText={this.addNewActivity}
                     addNewIndividualEnergyLevel={this.addNewEnergyLevel}
@@ -41,7 +68,7 @@ export default class ActivityReact extends Component {
                         <div>
                         <ul>
                             <li>
-                            <Link to={`/activities/${activity._id}/users`}>{activity.activityName}</Link>
+                            <Link to={`/zeus/${activity._id}/users`}>{activity.activityName}</Link>
                             </li>
                             <li>
                                 {activity.activityLevel}

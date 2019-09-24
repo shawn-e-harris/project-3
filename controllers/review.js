@@ -16,8 +16,6 @@ const reviewRouter = express.Router({
 reviewRouter.get("/reviews", function (req, res) {
   reviewApi.getAllReviews()
     .then((allReviews) => {
-      // RENDER NOT CREATED YET
-      // res.render("activitiesViewPath", {allActivities})
       res.json({ allReviews })
     })
     .catch((error) => {

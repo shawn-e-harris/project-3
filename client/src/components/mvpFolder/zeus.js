@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import IndividualActivityForm from "./activity"
-import AppActivity from "./activity"
 import Axios from "axios"
 
 const individualActivity = (text) => {
@@ -25,7 +23,7 @@ const activityList = (showActivity, activityIndex) => {
     )
 }
 
-class IndividualActivityForm extends Component {
+class IndividualZeusActivityForm extends Component {
 
     state = {
         activityName: "",
@@ -105,7 +103,7 @@ class IndividualActivityForm extends Component {
     }
 }
 
-class AppActivity extends React.Component {
+class AppZeusActivity extends React.Component {
 
     state = {
         activityList: {
@@ -137,11 +135,13 @@ class AppActivity extends React.Component {
 
     }
 
+    
+
     render() {
         return (
             <div>
                 <h1>Activity</h1>
-                <IndividualActivityForm
+                <IndividualZeusActivityForm
                     addNewIndividualActivityText={this.addNewActivity}
                     addNewIndividualEnergyLevel={this.addActivityLevel}
 
@@ -155,7 +155,4 @@ class AppActivity extends React.Component {
     }
 }
 
-export {
-    AppActivity,
-    IndividualActivityForm
-}
+export default AppZeusActivity;

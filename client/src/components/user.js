@@ -38,10 +38,8 @@ class IndividualUserForm extends React.Component {
 
 
         Axios.post(`/activities/${this.props.activityId}/users`, userName)
-            .then(res => {
-                // this.state({activity_id})
-                // this.state({user})
-                this.setState({ userName: res.data })
+            .then(results => {
+                this.setState({ userName: results.data.allUsers })
                 console.log(userName)
             })
             .catch(error => {
