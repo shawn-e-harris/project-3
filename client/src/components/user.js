@@ -69,8 +69,8 @@ class AppUser extends React.Component {
 
     state = {
         userList: {
-            individualUser: [""]
-            // hasEnteredUserText: false
+            individualUser: [""],
+            hasEnteredUserText: false
         }
     }
 
@@ -79,8 +79,8 @@ class AppUser extends React.Component {
         let userList = { ...this.state.userList }
 
         userList.individualUser.push(userName)
-        // this.setState({individualUser: individualUser})
-        // this.setState({hasEnteredUserText: true})
+        this.setState({individualUser: individualUser})
+        this.setState({hasEnteredUserText: true})
         this.setState({ userList })
     }
 
@@ -93,9 +93,10 @@ class AppUser extends React.Component {
                     addNewIndividualUserText={this.addNewUser}
                 />
                 {userList(this.state.userList)}
-                {/* {this.state.hasEnteredUserText ? <IndividualRatingForm
+                {this.state.hasEnteredUserText ? <IndividualRatingForm
                     addNewIndividualRatingNumber={this.addNewRating}
-                /> : null } */}
+                /> : null }
+                
             </div>
         );
     }

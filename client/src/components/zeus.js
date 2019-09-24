@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import IndividualUserForm from "./user"
+import IndividualActivityForm from "./activity"
+import AppActivity from "./activity"
 import Axios from "axios"
 
 const individualActivity = (text) => {
@@ -49,7 +50,7 @@ class IndividualActivityForm extends Component {
         console.log({ activity })
         console.log(activity)
 
-        Axios.post("/hades", activity)
+        Axios.post("/zeus", activity)
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -154,4 +155,7 @@ class AppActivity extends React.Component {
     }
 }
 
-export default AppActivity;
+export {
+    AppActivity,
+    IndividualActivityForm
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import IndividualUserForm from "./user"
+import IndividualActivityForm from "./activity"
+import AppActivity from "./activity"
 import Axios from "axios"
 
 const individualActivity = (text) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import IndividualReviewForm from "./review";
+// import IndividualReviewForm from "./review";
+import Axios from "axios";
 
 const individualRating = (number) => {
     return (
@@ -21,29 +22,47 @@ const ratingList = (showRating, ratingIndex) => {
 class IndividualRatingForm extends Component {
 
     state = {
-        newRatingNumber: Number,
+        rating: Number,
     }
 
     handleInputChange = (event) => {
-        this.setState({ newRatingNumber: event.target.value })
+        this.setState({ rating: event.target.value })
     }
 
     handleFormSubmission = (event) => {
         event.preventDefault();
+        this.props.addNewIndividualRatingNumber(this.state.rating)
+    }
 
-        this.props.addNewIndividualRatingNumber(this.state.newRatingNumber)
+    addRatingToServer = (rating) => {
+        console.log(this.props.activityId)
+        // console.log(this.props.userId)
+        console.log(rating)
+
+
+        Axios.post(`/activities/${this.props.activityId}/users`, rating)
+            .then(res => {
+                // this.state({activity_id})
+                // this.state({user})
+                this.setState({ rating: res.data })
+                console.log(rating)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     render() {
         return (
             <form onSubmit={this.handleFormSubmission}>
                 <input
+                    required
                     type="number"
                     placeholder="New Rating"
-                    value={this.state.newRatingNumber}
+                    value={this.state.rating}
                     onChange={this.handleInputChange}
                 />
-                <input type="submit" value="Add Rating" />
+                <input type="submit" value="Add Rating" onClick={() => { this.addRatingToServer(this.state) }}/>
             </form>
         )
     }
@@ -54,19 +73,19 @@ class AppRating extends React.Component {
     state = {
         ratingList: {
             individualRating: [Number],
-            hasEnteredRatingNumber: false,
+            // hasEnteredRatingNumber: false,
         }
     }
 
-    addNewRating = (newRatingNumber) => {
+    addNewRating = (rating) => {
 
         let ratingList = { ...this.state.ratingList }
-        console.log("counter before Number: ", typeof newRatingNumber)
-        newRatingNumber = Number(newRatingNumber)
-        console.log("counter after Number: ", typeof newRatingNumber)
-        ratingList.individualRating.push(newRatingNumber)
-        this.setState({individualRating: individualRating})
-        this.setState({hasEnteredRatingNumber: true})
+        console.log("counter before Number: ", typeof rating)
+        rating = Number(rating)
+        console.log("counter after Number: ", typeof rating)
+        ratingList.individualRating.push(rating)
+        // this.setState({ individualRating: individualRating })
+        // this.setState({ hasEnteredRatingNumber: true })
         this.setState({ ratingList })
 
     }
@@ -76,12 +95,14 @@ class AppRating extends React.Component {
             <div>
                 {/* <h1>My Rating</h1> */}
                 <IndividualRatingForm
+                activityId={this.props.activityId}
+                userId={this.props.userId}
                     addNewIndividualRatingNumber={this.addNewRating}
                 />
-                {ratingList(this.state.ratingList)}
+                {/* {ratingList(this.state.ratingList)}
                 {this.state.hasEnteredRatingNumber ? <IndividualReviewForm
                     addNewIndividualReviewText={this.addNewReview}
-                /> : null }  
+                /> : null} */}
             </div>
         );
     }

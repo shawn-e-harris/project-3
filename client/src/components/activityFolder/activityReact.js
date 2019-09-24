@@ -61,6 +61,7 @@ export default class ActivityReact extends Component {
             <div className="App">
 
                 <IndividualActivityForm
+                
                     addNewIndividualActivityText={this.addNewActivity}
                     addNewIndividualEnergyLevel={this.addNewEnergyLevel}
                 />
