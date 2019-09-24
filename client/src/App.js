@@ -13,7 +13,7 @@ export default function App() {
         {/* <Switch> */}
 
         {/* <Link to="/">Home</Link> */}
-        <Link to="/activities">Activity</Link>
+        <Link to="/activities">Home</Link>
         <Route exact path="/" render={
           () => {
             return (
@@ -21,12 +21,12 @@ export default function App() {
                 <h1>Lone Wolf</h1>
                 <Container fixed >
                 <h1 className="homePage zeus">
-                      <Link to="/zeus">Zeus</Link>
+                      <Link to="/activities">Activities</Link>
                     </h1>
                     </Container>
                     <Container fixed >
                     <h1 className="homePage hades" >
-                        <Link to="/hades">Hades</Link>
+                        <Link to="/reviews">Journal</Link>
                     </h1>
                 </Container>
               </div>

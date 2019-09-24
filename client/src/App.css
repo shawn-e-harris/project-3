@@ -11,6 +11,7 @@ App {
 h1 {
   color: whitesmoke;
   font-size: 50pt;
+  text-shadow: black 2px 2px 5px;
 }
 
 Container {
@@ -20,6 +21,7 @@ Container {
 a {
   text-decoration: none;
   color: white;
+  text-shadow: black 2px 2px 5px;
 }
 
 a:visited {
@@ -37,6 +39,7 @@ a:visited {
   justify-content: center;
   color: white;
   text-decoration: none;
+  text-shadow: black 2px 2px 5px;
 }
 
 .homePage:visited {
@@ -45,11 +48,11 @@ a:visited {
 }
 
 .zeus {
-  background-image: url("./images/zeus.jpg");
+  background-image: url("./images/original.gif");
   background-size: cover;
 }
 
 .hades {
-  background-image: url("./images/hades.jpg");
+  /*(background-image: url("./images/journal.jpeg");*/
   background-size: cover;
 }
