@@ -13,7 +13,7 @@ export default function App() {
         {/* <Switch> */}
 
         {/* <Link to="/">Home</Link> */}
-        <Link to="/activities">Home</Link>
+        <Link to="/">Home</Link>
         <Route exact path="/" render={
           () => {
             return (

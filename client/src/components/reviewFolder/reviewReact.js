@@ -6,14 +6,14 @@ import IndividualReviewForm from "../review"
 export default class ReviewReact extends Component {
 
     state = {
-        reviews: []
+        review: []
     }
 
     // GET ALL ACTIVITIES FROM SERVER
     getReviewsFromServer = () => {
         Axios.get(`/reviews`) //get prefix
             .then(results => { //create promise
-                this.setState({ reviews: results.data.allReviews })
+                this.setState({ review: results.data.allReviews })
                 console.log(results)
             })
             .catch(error => {
@@ -34,12 +34,12 @@ export default class ReviewReact extends Component {
 
                     addNewIndividualReviewText={this.addNewReview}
                 />
-                {this.state.reviews.map(review => {
+                {this.state.review.map(review => {
                     return (
                         <div>
                             <ul>
                                 <li>
-                                    {review.newReviewText}
+                                    {review.review}
                                 </li>
                             </ul>
                         </div>
