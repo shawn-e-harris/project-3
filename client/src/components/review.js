@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Axios from "axios"
 
-const individualReview = (text) => {
+const individualReview = (newReviewText) => {
     return (
-        <p>{text}</p>
+        <p>{newReviewText}</p>
     )
 }
 

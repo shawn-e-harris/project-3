@@ -32,21 +32,21 @@ export default class ActivityReact extends Component {
             <div className="App">
 
                 <IndividualActivityForm
-                
+
                     addNewIndividualActivityText={this.addNewActivity}
                     addNewIndividualEnergyLevel={this.addNewEnergyLevel}
                 />
                 {this.state.activities.map(activity => {
                     return (
                         <div>
-                        <ul>
-                            <li>
-                            <Link to={`/activities/${activity._id}/users`}>{activity.activityName}</Link>
-                            </li>
-                            <li>
-                                {activity.activityLevel}
-                            </li>
-                        </ul>
+                            <ul>
+                                <li>
+                                    <Link to={`/activities/${activity._id}/users`}>{activity.activityName}</Link>
+                                </li>
+                                <li>
+                                    {activity.activityLevel}
+                                </li>
+                            </ul>
                         </div>
                     )
                 })}

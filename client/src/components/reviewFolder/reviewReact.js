@@ -15,7 +15,6 @@ export default class ReviewReact extends Component {
             .then(results => { //create promise
                 this.setState({ reviews: results.data.allReviews })
                 console.log(results)
-                // console.table(results.data.allActivities)
             })
             .catch(error => {
                 console.log(error)
@@ -40,7 +39,7 @@ export default class ReviewReact extends Component {
                         <div>
                             <ul>
                                 <li>
-                                    {review.reviews}
+                                    {review.newReviewText}
                                 </li>
                             </ul>
                         </div>

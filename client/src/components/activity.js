@@ -110,7 +110,6 @@ class AppActivity extends React.Component {
         activityList: {
             individualActivity: [""],
             energyLevel: [""],
-            // hasEnteredActivityText: false
         }
     }
 
@@ -119,8 +118,6 @@ class AppActivity extends React.Component {
         let activityList = { ...this.state.activityList }
 
         activityList.individualActivity.push(activityName)
-        // this.setState({individualActivity: individualActivity})
-        // this.setState({hasEnteredActivityText: true})
         this.setState({ activityList })
 
     }
@@ -130,8 +127,6 @@ class AppActivity extends React.Component {
         let activityList = { ...this.state.activityList }
 
         activityList.energyLevel.push(activityLevel)
-        // this.setState({individualActivity: individualActivity})
-        // this.setState({hasEnteredActivityText: true})
         this.setState({ activityList })
 
     }
@@ -146,9 +141,6 @@ class AppActivity extends React.Component {
 
                 />
                 {activityList(this.state.activityList)}
-                {/* {this.state.hasEnteredActivityText ? <IndividualUserForm
-                    addNewIndividualUserText={this.addNewUser}
-                /> : null } */}
             </div>
         );
     }
