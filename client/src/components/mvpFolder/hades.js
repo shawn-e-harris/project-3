@@ -48,7 +48,7 @@ class IndividualHadesActivityForm extends Component {
         console.log({ activity })
         console.log(activity)
 
-        Axios.post("/hades", activity)
+        Axios.post("/api/hades", activity)
             .then(results => {
                 this.setState({ results })
                 console.log(results)

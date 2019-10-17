@@ -48,7 +48,7 @@ class IndividualZeusActivityForm extends Component {
         console.log({ activity })
         console.log(activity)
 
-        Axios.post("/zeus", activity)
+        Axios.post("/api/zeus", activity)
             .then(results => {
                 this.setState({ results })
                 console.log(results)

@@ -11,7 +11,7 @@ export default class ActivityReact extends Component {
 
     // GET ALL ACTIVITIES FROM SERVER
     getActivitiesFromServer = () => {
-        Axios.get(`/activities`) //get prefix
+        Axios.get(`/api/activities`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data.allActivities })
                 console.log(results)

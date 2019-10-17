@@ -11,7 +11,7 @@ export default class ZeusActivityReact extends Component {
 
     // GET ALL ACTIVITIES FROM SERVER
     getActivitiesFromServer = () => {
-        Axios.get(`/zeus`) //get prefix
+        Axios.get(`/api/zeus`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data.allActivities })
                 console.log(results)
@@ -24,7 +24,7 @@ export default class ZeusActivityReact extends Component {
 
     // ADD ACTIVITY TO SERVER
     addActivityToServer = (activity) => {
-        Axios.post(`/zeus`, { activity })
+        Axios.post(`/api/zeus`, { activity })
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -37,7 +37,7 @@ export default class ZeusActivityReact extends Component {
 
     // GET SINGLE ACTIVITY FROM SERVER
     getSingleActivityFromServer = (activity_id) => {
-        Axios.get(`/zeus/${activity_id}`) //get prefix
+        Axios.get(`/api/zeus/${activity_id}`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data })
                 console.log(results)
@@ -68,7 +68,7 @@ export default class ZeusActivityReact extends Component {
                         <div>
                         <ul>
                             <li>
-                            <Link to={`/zeus/${activity._id}/users`}>{activity.activityName}</Link>
+                            <Link to={`/api/zeus/${activity._id}/users`}>{activity.activityName}</Link>
                             </li>
                             <li>
                                 {activity.activityLevel}

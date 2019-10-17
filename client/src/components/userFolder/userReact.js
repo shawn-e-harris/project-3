@@ -13,7 +13,7 @@ export default class UserReact extends Component {
 
     // GET ALL USERS FROM SERVER
     getUsersFromServer = (activity_id) => {
-        Axios.get(`/activities/${activity_id}/users`) //get prefix
+        Axios.get(`/api/activities/${activity_id}/users`) //get prefix
             .then(results => { //create promise
                 this.setState({users: results.data.allUsers})
                 console.log(results.data.allUsers)

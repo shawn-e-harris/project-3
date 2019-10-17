@@ -11,7 +11,7 @@ export default class HadesActivityReact extends Component {
 
     // GET ALL ACTIVITIES FROM SERVER
     getActivitiesFromServer = () => {
-        Axios.get(`/hades`) //get prefix
+        Axios.get(`/api/hades`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data.allActivities })
                 console.log(results)
@@ -24,7 +24,7 @@ export default class HadesActivityReact extends Component {
 
     // ADD ACTIVITY TO SERVER
     addActivityToServer = (activity) => {
-        Axios.post(`/hades`, { activity })
+        Axios.post(`/api/hades`, { activity })
             .then(results => {
                 this.setState({ results })
                 console.log(results)
@@ -37,7 +37,7 @@ export default class HadesActivityReact extends Component {
 
     // GET SINGLE ACTIVITY FROM SERVER
     getSingleActivityFromServer = (activity_id) => {
-        Axios.get(`/hades/${activity_id}`) //get prefix
+        Axios.get(`/api/hades/${activity_id}`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data })
                 console.log(results)
@@ -68,7 +68,7 @@ export default class HadesActivityReact extends Component {
                         <div>
                         <ul>
                             <li>
-                            <Link to={`/hades/${activity._id}/users`}>{activity.activityName}</Link>
+                            <Link to={`/api/hades/${activity._id}/users`}>{activity.activityName}</Link>
                             </li>
                             <li>
                                 {activity.activityLevel}
