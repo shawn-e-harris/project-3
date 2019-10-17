@@ -14,20 +14,20 @@ export default function App() {
 
         {/* <Link to="/">Home</Link> */}
         <Link to="/">Home</Link>
-        <Route exact path="/" render={
+        <Route exact path="/" render= {
           () => {
             return (
               <div>
                 <h1>Lone Wolf</h1>
                 <Container fixed >
-                <h1 className="homePage zeus">
-                      <Link to="/activities">Activities</Link>
-                    </h1>
-                    </Container>
-                    <Container fixed >
-                    <h1 className="homePage hades" >
-                        <Link to="/reviews">Journal</Link>
-                    </h1>
+                  <h1 className="homePage zeus">
+                    <Link to="/activities">Activities</Link>
+                  </h1>
+                </Container>
+                <Container fixed >
+                  <h1 className="homePage hades" >
+                    <Link to="/reviews">Journal</Link>
+                  </h1>
                 </Container>
               </div>
             );
@@ -36,7 +36,7 @@ export default function App() {
         <Route exact path="/reviews" component={ReviewReact} />
         <Route exact path="/activities" component={ActivityReact} />
         <Route exact path="/activities/:activity_id/users" component={UserReact} />
-{/* </Switch> */}
+        {/* </Switch> */}
       </Router>
     </div>
   )
