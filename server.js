@@ -22,10 +22,10 @@ app.use(express.static(`${__dirname}/client/build`))
 
 
 // PREFIX FOR ALL ROUTERS
-app.use('/api/', reviewRouter)
-app.use('/api/', ratingRouter)
-app.use('/api/', userRouter)
-app.use('/api/', activityRouter)
+app.use('/', reviewRouter)
+app.use('/', ratingRouter)
+app.use('/', userRouter)
+app.use('/', activityRouter)
 
 
 /* Step 5
