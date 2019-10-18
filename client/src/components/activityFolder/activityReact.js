@@ -11,7 +11,7 @@ export default class ActivityReact extends Component {
 
     // GET ALL ACTIVITIES FROM SERVER
     getActivitiesFromServer = () => {
-        Axios.get(`/activities/`) //get prefix
+        Axios.get(`/api/activities/`) //get prefix
             .then(results => { //create promise
                 this.setState({ activities: results.data.allActivities })
                 console.log(results)
@@ -41,7 +41,7 @@ export default class ActivityReact extends Component {
                         <div>
                             <ul>
                                 <li>
-                                    <Link to={`/activities/${activity._id}/users/`}>{activity.activityName}</Link>
+                                    <Link to={`/api/activities/${activity._id}/users/`}>{activity.activityName}</Link>
                                 </li>
                                 <li>
                                     {activity.activityLevel}

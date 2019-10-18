@@ -49,7 +49,7 @@ class IndividualActivityForm extends Component {
         console.log({ activityName })
         console.log(activityName)
 
-        Axios.post("/activities/", activityName)
+        Axios.post("/api/activities/", activityName)
             .then(results => {
                 this.setState({ activityName: results.data.allActivities })
                 console.log(activityName)
