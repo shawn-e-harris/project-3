@@ -36,7 +36,7 @@ class IndividualReviewForm extends Component {
         console.log({ newReviewText })
         console.log(newReviewText)
 
-        Axios.post("/api/reviews", newReviewText)
+        Axios.post("/reviews/", newReviewText)
             .then(results => {
                 this.setState({ newReviewText: results.data.allReviews })
                 console.log(newReviewText)

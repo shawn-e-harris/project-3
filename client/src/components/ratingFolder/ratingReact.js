@@ -12,7 +12,7 @@ export default class RatingReact extends Component {
 
     // GET ALL USERS FROM SERVER
     getRatingsFromServer = (activity_id) => {
-        Axios.get(`/api/activities/${activity_id}/users/`) //get prefix
+        Axios.get(`/activities/${activity_id}/users/`) //get prefix
             .then(results => { //create promise
                 this.setState({ratings: results.data.allRatings})
                 console.log(results.data.allRatings)

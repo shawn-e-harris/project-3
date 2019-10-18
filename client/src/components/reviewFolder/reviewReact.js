@@ -11,7 +11,7 @@ export default class ReviewReact extends Component {
 
     // GET ALL ACTIVITIES FROM SERVER
     getReviewsFromServer = () => {
-        Axios.get(`/api/reviews`) //get prefix
+        Axios.get(`/reviews/`) //get prefix
             .then(results => { //create promise
                 this.setState({ reviews: results.data.allReviews })
                 console.log(results)

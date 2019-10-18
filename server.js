@@ -31,7 +31,7 @@ app.use('/', activityRouter)
 /* Step 5
  *
  * add catch all route to serve up the built react app for any request not made to our
- * /api/... routes.
+ * /... routes.
  */
 app.get('/*', (req, res) => {
     res.sendFile(`${__dirname}/client/build`)

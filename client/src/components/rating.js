@@ -40,7 +40,7 @@ class IndividualRatingForm extends Component {
         console.log(rating)
 
 
-        Axios.post(`/api/activities/${this.props.activityId}/users`, rating)
+        Axios.post(`/activities/${this.props.activityId}/users/`, rating)
             .then(res => {
                 // this.state({activity_id})
                 // this.state({user})
