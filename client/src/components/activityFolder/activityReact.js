@@ -41,7 +41,7 @@ export default class ActivityReact extends Component {
                         <div>
                             <ul>
                                 <li>
-                                    <Link to={`/api/activities/${activity._id}/users/`}>{activity.activityName}</Link>
+                                    <Link to={`/activities/${activity._id}/users/`}>{activity.activityName}</Link>
                                 </li>
                                 <li>
                                     {activity.activityLevel}

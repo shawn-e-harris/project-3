@@ -21,21 +21,21 @@ export default function App() {
                 <h1>Lone Wolf</h1>
                 <Container fixed >
                   <h1 className="homePage zeus">
-                    <Link to="/api/activities">Activities</Link>
+                    <Link to="/activities">Activities</Link>
                   </h1>
                 </Container>
                 <Container fixed >
                   <h1 className="homePage hades" >
-                    <Link to="/api/reviews">Journal</Link>
+                    <Link to="/reviews">Journal</Link>
                   </h1>
                 </Container>
               </div>
             );
           }
         } />
-        <Route exact path="/api/reviews" component={ReviewReact} />
-        <Route exact path="/api/activities" component={ActivityReact} />
-        <Route exact path="/api/activities/:activity_id/users" component={UserReact} />
+        <Route exact path="/reviews" component={ReviewReact} />
+        <Route exact path="/activities" component={ActivityReact} />
+        <Route exact path="/activities/:activity_id/users" component={UserReact} />
         {/* </Switch> */}
       </Router>
     </div>
