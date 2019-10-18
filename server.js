@@ -34,7 +34,7 @@ app.use('/api/', activityRouter)
  * /... routes.
  */
 app.get('/*', (req, res) => {
-    res.sendFile(`${__dirname}/client/build`)
+    res.sendFile(`${__dirname}/client/build/index.html`)
 })
 
 
