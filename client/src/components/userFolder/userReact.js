@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Axios from "axios"
 import IndividualUserForm from "../user"
 // import RatingReact from "../ratingFolder/ratingReact"
@@ -42,7 +41,6 @@ export default class UserReact extends Component {
                             <ul>
                                 <li>
                                     {user.userName}
-                                    {/* {RatingReact} */}
                                 </li>
                             </ul>
                         </div>

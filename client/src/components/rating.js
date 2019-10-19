@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import IndividualReviewForm from "./review";
+// import IndividualJournalForm from "./journal";
 import Axios from "axios";
 
 const individualRating = (number) => {

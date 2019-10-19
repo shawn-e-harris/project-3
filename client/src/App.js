@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import ReviewReact from "./components/reviewFolder/reviewReact"
+import JournalReact from "./components/journalFolder/journalReact"
 import ActivityReact from "./components/activityFolder/activityReact"
 import UserReact from "./components/userFolder/userReact"
 import Container from '@material-ui/core/Container';
@@ -26,14 +26,14 @@ export default function App() {
                 </Container>
                 <Container fixed >
                   <h1 className="homePage hades" >
-                    <Link to="/reviews">Journal</Link>
+                    <Link to="/journals">Journal</Link>
                   </h1>
                 </Container>
               </div>
             );
           }
         } />
-        <Route exact path="/reviews" component={ReviewReact} />
+        <Route exact path="/journals" component={JournalReact} />
         <Route exact path="/activities" component={ActivityReact} />
         <Route exact path="/activities/:activity_id/users" component={UserReact} />
         {/* </Switch> */}

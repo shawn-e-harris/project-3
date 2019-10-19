@@ -5,7 +5,7 @@ const app = express()
 // IMPORT ROUTERS
 const { activityRouter } = require('./controllers/activity.js')
 const { ratingRouter } = require('./controllers/rating.js')
-const { reviewRouter } = require('./controllers/review.js')
+const { JournalRouter } = require('./controllers/journal.js')
 const { userRouter } = require('./controllers/user.js')
 
 
@@ -22,7 +22,7 @@ app.use(express.static(`${__dirname}/client/build`))
 
 
 // PREFIX FOR ALL ROUTERS
-app.use('/api/', reviewRouter)
+app.use('/api/', JournalRouter)
 app.use('/api/', ratingRouter)
 app.use('/api/', userRouter)
 app.use('/api/', activityRouter)

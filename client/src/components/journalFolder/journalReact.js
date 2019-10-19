@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+// import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Axios from "axios"
-import IndividualReviewForm from "../review"
+import IndividualJournalForm from "../journal"
 
-export default class ReviewReact extends Component {
+export default class JournalReact extends Component {
 
     state = {
-        reviews: []
+        journals: []
     }
 
-    // GET ALL ACTIVITIES FROM SERVER
-    getReviewsFromServer = () => {
-        Axios.get(`/api/reviews/`) //get prefix
+    // GET ALL JOURNALS FROM SERVER
+    getJournalsFromServer = () => {
+        Axios.get(`/api/journals/`) //get prefix
             .then(results => { //create promise
-                this.setState({ reviews: results.data.allReviews })
+                this.setState({ journals: results.data.allJournals })
                 console.log(results)
             })
             .catch(error => {
@@ -23,23 +23,23 @@ export default class ReviewReact extends Component {
 
 
     componentDidMount() {
-        this.getReviewsFromServer();
+        this.getJournalsFromServer();
     }
 
     render() {
         return (
             <div className="App">
 
-                <IndividualReviewForm
+                <IndividualJournalForm
 
-                    addNewIndividualReviewText={this.addNewReview}
+                    addNewIndividualJournalText={this.addNewJournal}
                 />
-                {this.state.reviews.map(review => {
+                {this.state.journals.map(journal => {
                     return (
                         <div>
                             <ul>
                                 <li>
-                                    {review.newReviewText}
+                                    {journal.journal}
                                 </li>
                             </ul>
                         </div>
