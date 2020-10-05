@@ -4,8 +4,15 @@ body {
   text-align: center;
 }
 
-/* App {
-  background-image: url("./");
+/* .viewSpace {
+  width: 38%;
+  height: 100vh;
+  background-color: black;
+}
+
+.mobileView {
+  display: flex;
+  justify-content: space-between;
 } */
 
 h1 {
@@ -13,10 +20,6 @@ h1 {
   font-size: 50pt;
   text-shadow: black 2px 2px 5px;
 }
-
-/* Container {
-  font-size: 30pt;
-} */
 
 a {
   text-decoration: none;
@@ -49,10 +52,11 @@ a:visited {
 
 .zeus {
   background-image: url("./images/original.gif");
+  background-size: 200px;
   background-size: cover;
 }
 
 .hades {
-  background-image: url("./images/images.jpeg");
+  background-image: url("./images/light.gif");
   background-size: cover;
 }

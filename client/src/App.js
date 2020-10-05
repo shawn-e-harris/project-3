@@ -8,16 +8,14 @@ import './App.css';
 
 export default function App() {
   return (
-    <div>
+    <div className="mobileView">
+        <div className="viewSpace leftView"></div>
       <Router>
-        {/* <Switch> */}
-
-        {/* <Link to="/">Home</Link> */}
-        <Link to="/">Home</Link>
         <Route exact path="/" render= {
           () => {
             return (
               <div>
+              <Link to="/">Home</Link>
                 <h1>Lone Wolf</h1>
                 <Container fixed >
                   <h1 className="homePage zeus">
@@ -36,8 +34,9 @@ export default function App() {
         <Route exact path="/journals" component={JournalReact} />
         <Route exact path="/activities" component={ActivityReact} />
         <Route exact path="/activities/:activity_id/users" component={UserReact} />
-        {/* </Switch> */}
       </Router>
+        <div className="viewSpace rightView"></div>
     </div>
+
   )
 }
