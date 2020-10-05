@@ -7,6 +7,9 @@ describe("Testing Data Storage", () => {
 
     it.only("Add activity", () => {
         cy.visit("/")
-        cy.contains('[href]', "Activities").click()
+        cy.contains('[href]', "Activities")
+        .click()
+        cy.get('[placeholder="New Activity"]')
+        .type("Read a Book")
     })
 })
