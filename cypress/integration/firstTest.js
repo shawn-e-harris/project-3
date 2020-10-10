@@ -14,6 +14,7 @@ describe("Testing Data Storage", () => {
         cy.get('[placeholder="New Activity"]')
         // type "Read a Book" into input
         .type("Read a Book")
-        
+        // travel up DOM to parent
+        .parent()
     })
 })
