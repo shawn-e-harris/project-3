@@ -16,5 +16,14 @@ describe("Testing Data Storage", () => {
         .type("Read a Book")
         // travel up DOM to parent
         .parent()
+        // locate child radio by attribute name & value 
+        .find('[value="Low"]')
+        // click Low Activity radio
+        .click()
+        // travel up DOM to parent
+        .parent()
+        // locate child by element
+        .find('[type="submit"]')
+        .click()
     })
 })
