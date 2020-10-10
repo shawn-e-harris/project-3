@@ -37,12 +37,14 @@ describe("Testing Data Storage", () => {
         // click activities link
         .click()
         // locate input by attribute name & value
-        // type "Read a Book" into input
+        cy.get('[placeholder="New Journal"]')
+        // type "Today I worked on a Cypress test and I feel accomplished!" into input
+        .type('Today I worked on a Cypress test and I feel accomplished!')
         // travel up DOM to parent
-        // locate child radio by attribute name & value 
-        // click Low Activity radio
-        // travel up DOM to parent
+        .parent()
         // locate child submit by attribute name & value
+        .find('[type="submit"]')
         // click Submit
+        .click()
     })
 })
