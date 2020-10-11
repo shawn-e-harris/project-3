@@ -6,7 +6,7 @@ describe("Testing Adding Activities & Journals", () => {
         // visit baseUrl
         cy.visit('/')
     })
-    it.only("Add Activity", () => {
+    it("Add Activity", () => {
         
         // locate by attribute with content that contains "Activities"
         cy.contains('[href]', "Activities")
