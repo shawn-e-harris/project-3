@@ -4,13 +4,13 @@ import Axios from "axios"
 
 const individualActivity = (text) => {
     return (
-        <p>{text}</p>
+        <p className="iActivity">{text}</p>
     )
 }
 
 const energyLevel = (text) => {
     return (
-        <p>{text}</p>
+        <p className="iEnergyLevel">{text}</p>
     )
 }
 

@@ -6,28 +6,35 @@ describe("Testing Adding Activities & Journals", () => {
         // visit baseUrl
         cy.visit('/')
     })
-    it("Add Activity", () => {
+    it.only("Add Activity", () => {
         
         // locate by attribute with content that contains "Activities"
         cy.contains('[href]', "Activities")
-        // click activities link
-        .click()
+            // click activities link
+            .click()
         // locate input by attribute name & value
         cy.get('[placeholder="New Activity"]')
-        // type "Read a Book" into input
-        .type("Read a Book")
-        // travel up DOM to parent
-        .parent()
-        // locate child radio by attribute name & value 
-        .find('[value="Low"]')
-        // click Low Activity radio
-        .click()
-        // travel up DOM to parent
-        .parent()
-        // locate child submit by attribute name & value
-        .find('[type="submit"]')
-        // click Submit
-        .click()
+            // type "Read a Book" into input
+            .type("Read a Book")
+            // travel up DOM to parent
+            .parent()
+            // locate child radio by attribute name & value 
+            .find('[value="Low"]')
+            // click Low Activity radio
+            .click()
+            // travel up DOM to parent
+            .parent()
+            // locate child submit by attribute name & value
+            .find('[type="submit"]')
+            // click Submit
+            .click()
+        // verify submit worked
+        cy.get('.iActivity')
+            // verify Activity should contain "Read a Book"
+            .should('contain', 'Read a Book')
+        cy.get('.iEnergyLevel')
+            // verify Energy Level should contain "Low"
+            .should('contain', 'Low')
     })
 
     it('Add Journal Entry', () => {
