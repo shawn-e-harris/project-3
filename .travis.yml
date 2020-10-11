@@ -17,8 +17,6 @@ cache:
     - ~/.npm
     - ./node_modules
     - ~/.cache
-#   override:
-#     - npm ci
-#     - npm run cy:verify
+# npm ci, not npm run ci
 script:
   - npm ci
