@@ -1,1 +1,6 @@
 language: javaScript
+
+# safelist
+branches:
+  only:
+  - master
