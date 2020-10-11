@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "lts/*"
+install:
+  - npm ci
 # addons:
 #   apt:
 #     packages:
@@ -19,7 +21,5 @@ node_js:
 #     - npm ci
 #     - npm run cy:verify
 #     - eval npm ci
-# # install:
-# #   - npm ci
 # # script:
 # #   - npm run ci
