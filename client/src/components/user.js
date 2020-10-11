@@ -1,5 +1,5 @@
 import React from 'react';
-import IndividualRatingForm from "./rating";
+// import IndividualRatingForm from "./rating";
 import Axios from "axios"
 
 const individualUser = (text) => {

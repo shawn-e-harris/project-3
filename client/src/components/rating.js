@@ -10,14 +10,14 @@ const individualRating = (number) => {
     )
 }
 
-const ratingList = (showRating, ratingIndex) => {
+// const ratingList = (showRating, ratingIndex) => {
 
-    return (
-        <div>
-            {showRating.individualRating.map(individualRating)}
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             {showRating.individualRating.map(individualRating)}
+//         </div>
+//     )
+// }
 
 class IndividualRatingForm extends Component {
 

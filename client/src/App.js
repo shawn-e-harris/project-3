@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import JournalReact from './components/journalFolder/journalReact';
 import ActivityReact from './components/activityFolder/activityReact';
 import UserReact from './components/userFolder/userReact';
