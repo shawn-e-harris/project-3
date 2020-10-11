@@ -21,4 +21,4 @@ cache:
 #     - npm ci
 #     - npm run cy:verify
 script:
-  - npm run ci
+  - npm ci
