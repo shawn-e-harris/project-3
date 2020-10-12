@@ -20,8 +20,10 @@ cache:
 # npm ci, not npm run ci
 script:
   - npm ci
-  - npm run client
+  # - npm run client
 jobs:
   include:
+    - stage: start server
+      script: npm run client
     - stage: record
       script: $(npm bin)/cypress run --record
