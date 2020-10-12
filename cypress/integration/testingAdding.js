@@ -48,7 +48,7 @@ describe("Testing Adding Activities & Journals", () => {
         // type "Today I worked on a Cypress test and I feel accomplished!" into input
         .type('Today I worked on a Cypress test and I feel accomplished!')
         // travel up DOM to parent w/ form element
-        .parent('form')
+        .parent()
         // click Submit
         .submit()
     })
