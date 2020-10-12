@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 describe('Testing Routes', () => {
 
     it.only('Test All Routes', () => {

@@ -20,3 +20,4 @@ cache:
 # npm ci, not npm run ci
 script:
   - npm ci
+  - $(npm bin)/cypress run --record
