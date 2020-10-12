@@ -21,4 +21,7 @@ cache:
 script:
   - npm ci
   - npm run client
-  - $(npm bin)/cypress run --record
+jobs:
+  include:
+    - stage: record
+      script: $(npm bin)/cypress run --record
