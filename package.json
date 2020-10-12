@@ -21,6 +21,7 @@
     "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\"",
     "start": "my-server -p 3000",
     "cy:run": "cypress run",
+    "client": "cd client && npm start",
     "test": "start-server-and-test start http://localhost:3000 cy:run",
     "cy:ci": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test start https-get://localhost:3030 cy:run",
     "postinstall": "cd client && npm i && npm run build"
