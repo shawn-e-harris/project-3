@@ -1,0 +1,51 @@
+# if you want to see more CI examples that cache NPM modules
+# and Cypress binary, check out
+# https://github.com/cypress-io/cypress-example-kitchensink
+
+stages:
+  - build
+  - test
+
+# to cache both npm modules and Cypress binary we use environment variables
+# to point at the folders we can list as paths in "cache" job settings
+variables:
+  # see https://yarnpkg.com/lang/en/docs/cli/cache/
+  YARN_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/yarn"
+  # see https://on.cypress.io/caching
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - cache/yarn
+    - cache/Cypress
+    # we also cache "node_modules" folder because
+    # we need installed modules in the "e2e" job
+    - node_modules
+
+# this job installs NPM dependencies and Cypress
+install:
+  image: cypress/base:12.13.0
+  stage: build
+  script:
+    - yarn --frozen-lockfile
+    - yarn cypress verify
+
+# this job runs Cypress tests
+e2e:
+  image: cypress/base:12.13.0
+  stage: test
+  script:
+    # run Cypress e2e tests
+    # if you have set up Dashboard recording
+    # add --record and --parallel flags
+    # and make sure a secret environment variable CYPRESS_RECORD_KEY is set
+    - yarn cypress run
+  artifacts:
+    paths:
+      - cypress/videos
+      - cypress/screenshots
+    expire_in: 1 day
+    when: always
